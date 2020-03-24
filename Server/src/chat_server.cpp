@@ -17,6 +17,8 @@
 #include <utility>
 #include "asio.hpp"
 #include "chat_message.hpp"
+#include "../include/Dealer.hpp"
+#include "../include/Card.hpp"
 
 using asio::ip::tcp;
 
@@ -199,6 +201,14 @@ private:
 
 int main(int argc, char* argv[])
 {
+
+   DEALER dealer;
+   CARD card;
+   for(int i = 0; i < 3; i++){
+      card = dealer.deal_card();
+      std::cout << "Dealed : " << card.print_value() << " of " << card.print_suite() << std::endl;
+   }
+
   try
   {
     if (argc < 2)
