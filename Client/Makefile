@@ -8,7 +8,7 @@ asio-1.12.2:
 
 CXXFLAGS+= -DASIO_STANDALONE -Wall -O0 -g -std=c++11
 CPPFLAGS+=-I./include -I./asio-1.12.2/include
-LDLIBS+= -lpthread
+LDLIBS+= -lpthread `pkg-config gtkmm-3.0 --cflags --libs` -rdynamic
 
 clean:
 	-rm -rf asio-1.12.2
