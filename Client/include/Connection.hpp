@@ -7,6 +7,7 @@
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
+#pragma once
 
 #include <cstdlib>
 #include <deque>
@@ -95,7 +96,7 @@ class CONNECTION{
         });
   }
   public:
-    chat_client(asio::io_context& io_context,
+    CONNECTION(asio::io_context& io_context,
       const tcp::resolver::results_type& endpoints)
     : io_context_(io_context),
       socket_(io_context)

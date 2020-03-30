@@ -1,48 +1,42 @@
-#include <gtk/gtk.h>
+#include <gtkmm.h>
 #include <iostream>
 
-void enter_game();
+// GtkWidget *entry_ip;
+// GtkWidget *entry_port;
+// GtkWidget *btn_join;
+// GtkWidget *btn_spectate;
+// GtkWidget *window2;
+// GtkWidget *window;
+Gtk::Window *window = nullptr;
+Gtk::Window *window2 = nullptr;
 
-GtkWidget *entry_ip;
-GtkWidget *entry_port;
-GtkWidget *btn_join;
-GtkWidget *btn_spectate;
-GtkWidget *window2;
-GtkWidget *window;
+static void enter_game(Glib::RefPtr<Gtk::Application> app){
+   window->hide();
+   app->run(*window2);
+}
+
 int main(int argc, char *argv[]){
 
-   GtkBuilder *builder;
-   
-   gtk_init(&argc, &argv);
+   auto app = Gtk::Application::create(argc, argv, "PokerProject.Team11");
 
-   builder = gtk_builder_new();
-   gtk_builder_add_from_file(builder, "glade/MainWindow.glade", NULL);
+   Glib::RefPtr<Gtk::Builder> builder = Gtk::Builder::create_from_file("glade/MainWindow.glade");
+   builder->get_widget("MainWindow", window);
+   builder->get_widget("GameWindow", window2);
+   Gtk::Entry *entry_ip = nullptr;
+   builder->get_widget("entry_ip", entry_ip);
+   Gtk::Entry *entry_port = nullptr;
+   builder->get_widget("entry_port", entry_port);
+   Gtk::Button *btn_join = nullptr;
+   builder->get_widget("btn_join", btn_join);
+   Gtk::Button *btn_spectate = nullptr;
+   builder->get_widget("btn_spectate", btn_spectate);
 
-   window = GTK_WIDGET(gtk_builder_get_object(builder, "MainWindow"));
-   window2 = GTK_WIDGET(gtk_builder_get_object(builder, "GameWindow"));
-   gtk_builder_connect_signals(builder, NULL);
+   //btn_join->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&enter_game), app));
 
-   entry_ip = GTK_WIDGET(gtk_builder_get_object(builder, "entry_ip"));
-   entry_port = GTK_WIDGET(gtk_builder_get_object(builder, "entry_port"));
-   btn_join = GTK_WIDGET(gtk_builder_get_object(builder, "btn_join"));
-   btn_spectate = GTK_WIDGET(gtk_builder_get_object(builder, "btn_spectate"));
+   app->run(*window);
 
-   g_object_unref(builder);
-
-   gtk_widget_show(window);
-   gtk_main();
+   delete window;
 
    return 0;
 
-}
-
-void enter_game(){
-   gtk_widget_hide(window);
-   gtk_widget_hide(btn_join);
-   std::cout << "enter_game" << std::endl;
-   gtk_widget_show(window2);
-}
-
-void on_window_main_destroy(){
-   gtk_main_quit();
 }
