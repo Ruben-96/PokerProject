@@ -22,7 +22,10 @@ class PLAYER{
             hand.push_back(card);
         }
         CARD remove_card(int card){
-            return hand.erase(card);
+            
+        }
+        std::string get_move(){
+            return move;
         }
         void bet(){
             move = "bet";
