@@ -125,15 +125,15 @@ public:
     {
         std::unordered_map< Rank, std::function< bool(std::vector<Card>&) > > hand_score_table
         {
-            {ROYAL_FLUSH, [](std::vector<Card>& hand)->bool
+            {ROYAL_FLUSH, [](std::vector<Card>& hand)->bool // royal flush
                 {
                     std::unordered_set<int> suit_set, rank_set;
-                    std::unordered_set<int> royal_flush_ranks {8, 9, 10, 11, 12};
+                    std::unordered_set<int> royal_flush_ranks {8, 9, 10, 11, 12}; // checks for the specific ranks
                     for(auto card: hand){ suit_set.insert(card.suit); rank_set.insert(card.rank);};
-                    return ( ( suit_set.size() == 1 ) && ( rank_set == royal_flush_ranks ) );
+                    return ( ( suit_set.size() == 1 ) && ( rank_set == royal_flush_ranks ) ); // and that only one suit is present
                 }
             },
-            {STRAIGHT_FLUSH, [](std::vector<Card>& hand)->bool
+            {STRAIGHT_FLUSH, [](std::vector<Card>& hand)->bool // straight flush
                 {
                     std::unordered_set<int> suit_set;
                     for(auto card: hand){ suit_set.insert(card.suit); }
@@ -141,54 +141,56 @@ public:
                     return suit_set.size() == 1;
                 }
             },
-            {FOUR_KIND, [](std::vector<Card>& hand)->bool
+            {FOUR_KIND, [](std::vector<Card>& hand)->bool // four of a kind
                 {
                     std::unordered_map<Card_rank, int> card_count;
-                    for(auto card: hand) { card_count[card.rank]++; };
-                    for(auto& kv: card_count) { if(kv.second == 4) return true; };
+                    for(auto card: hand) { card_count[card.rank]++; }; // counts the number of cards in each rank in the hand
+                    for(auto& kv: card_count) { if(kv.second == 4) return true; }; // if one rank has four cards found, return true
                     return false;
                 }
             }, 
-            {FULL_HOUSE, [](std::vector<Card>& hand)->bool
+            {FULL_HOUSE, [](std::vector<Card>& hand)->bool // full house
                 {
                     std::unordered_set<int> rank_set;
                     for(auto card: hand) { rank_set.insert(card.rank); };
-                    return rank_set.size() == 2;
+                    return rank_set.size() == 2; // returns true/false whether or not only two ranks are found
+                    // four of a kind would pass this test, but will be filtered
                 }
             }, 
-            {FLUSH, [](std::vector<Card>& hand)->bool
+            {FLUSH, [](std::vector<Card>& hand)->bool // flush
                 {
                     std::unordered_set<int> suit_set;
                     for(auto card: hand) { suit_set.insert(card.suit); };
-                    return suit_set.size() == 1;
+                    return suit_set.size() == 1; // returns whether or not all cards are of the same suit
+                    // like similar tests above and below, other hands can satisfy this condition but they will not reach this test
                 }
             }, 
-            {STRAIGHT, [](std::vector<Card>& hand)->bool
+            {STRAIGHT, [](std::vector<Card>& hand)->bool // straight
                 {
                     for(unsigned int i = 0; i < (hand.size() - 1); i++) { if ((hand[i].rank - hand[i+1].rank) != 1) { return false; }; };
-                    return true;
+                    return true; // returns false if card ranks are found to be non-consecutive in order
                 }
             },
-            {THREE_KIND, [](std::vector<Card>& hand)->bool
+            {THREE_KIND, [](std::vector<Card>& hand)->bool // three of a kind
                 {
                     std::unordered_map<Card_rank, int> card_count;
-                    for(auto card: hand) { card_count[card.rank]++; };
-                    for(auto& kv: card_count) { if(kv.second == 3) return true; };
+                    for(auto card: hand) { card_count[card.rank]++; }; // counts the card of each rank
+                    for(auto& kv: card_count) { if(kv.second == 3) return true; }; // returns true if found any rank found 3 times
                     return false;
                 }
             }, 
-            {TWO_PAIR, [](std::vector<Card>& hand)->bool
+            {TWO_PAIR, [](std::vector<Card>& hand)->bool // two pair
                 {
                     std::unordered_set<int> rank_set;
-                    for(auto card: hand) { rank_set.insert(card.rank); };
-                    return rank_set.size() == 3;
+                    for(auto card: hand) { rank_set.insert(card.rank); }; // looks for rank
+                    return rank_set.size() == 3; // returns true if only three unique ranks present in hand
                 }
             },
             {PAIR, [](std::vector<Card>& hand)->bool
                 {
                     std::unordered_set<int> rank_set;
                     for(auto card: hand) { rank_set.insert(card.rank); };
-                    return rank_set.size() == 4;
+                    return rank_set.size() == 4; // returns true if only four unique ranks present in hand
                 }
             },
             {HIGH_CARD, [](std::vector<Card>& hand)->bool{return true;}}, 
@@ -322,7 +324,6 @@ public:
     chat_message event_handler(std::string input_string)
     {
         // parses input string, updates
-        // std::cout << input_string << std::endl;
         json to_dealer = json::parse(input_string);
         json to_players;
         // according to the game phase, modify the game state, and record the new game state in a json object
@@ -333,15 +334,15 @@ public:
 
             case PRE:
                 {
-                    std::string uuid_str = to_dealer["from"]["uuid"].get<std::string>();
+                    std::string uuid_str = to_dealer["from"]["uuid"].get<std::string>(); // read name and uuid from json
                     std::string name = to_dealer["from"]["name"].get<std::string>();
                     
-                    if(std::find(player_uuids.begin(), player_uuids.end(), uuid_str) == player_uuids.end())
+                    if(std::find(player_uuids.begin(), player_uuids.end(), uuid_str) == player_uuids.end()) // if uuid not recognized
                     {
                         if(player_uuids.size() < PLAYER_COUNT_MAX)
                         {
-                            player_uuids.push_back( uuid_str );
-                            player_lookup_umap.insert({uuid_str, Player(uuid_str, name)});
+                            player_uuids.push_back( uuid_str ); // add player id to id list
+                            player_lookup_umap.insert({uuid_str, Player(uuid_str, name)}); // create player in player list
 
                             std::stringstream comment;
                             comment << "Player " << name << " has joined the lobby.";
@@ -358,14 +359,8 @@ public:
                     if(to_dealer.find("event") != to_dealer.end())
                     {
                         std::string player_event = to_dealer["event"].get<std::string>();
-                        if(player_event == "join") player_lookup_umap.at(uuid_str).is_active = true;
+                        if(player_event == "join") player_lookup_umap.at(uuid_str).is_active = true; // join = ready flag
                     }
-                    /*
-                    for(auto player_uuid: player_uuids)
-                    {
-                        Player* player =  &player_lookup_umap.at(player_uuid);
-                    }
-                    */
                     if(player_uuids.size() >= PLAYER_COUNT_MIN && player_uuids.size() <= PLAYER_COUNT_MAX)
                     {
                         bool all_ready = true;
@@ -399,7 +394,6 @@ public:
             case BET_ONE:
                 {
                     std::string current_player_uuid = to_dealer["from"]["uuid"].get<std::string>();
-                    assert(current_player_uuid == *turn_iter);
                     
                     Player* player = &player_lookup_umap.at(current_player_uuid);
 
