@@ -341,7 +341,7 @@ public:
                         if(player_uuids.size() < PLAYER_COUNT_MAX)
                         {
                             player_uuids.push_back( uuid_str );
-                            player_lookup_umap.try_emplace(uuid_str, uuid_str, name);
+                            player_lookup_umap.insert({uuid_str, Player(uuid_str, name)});
 
                             std::stringstream comment;
                             comment << "Player " << name << " has joined the lobby.";
@@ -360,10 +360,12 @@ public:
                         std::string player_event = to_dealer["event"].get<std::string>();
                         if(player_event == "join") player_lookup_umap.at(uuid_str).is_active = true;
                     }
+                    /*
                     for(auto player_uuid: player_uuids)
                     {
                         Player* player =  &player_lookup_umap.at(player_uuid);
                     }
+                    */
                     if(player_uuids.size() >= PLAYER_COUNT_MIN && player_uuids.size() <= PLAYER_COUNT_MAX)
                     {
                         bool all_ready = true;
@@ -439,12 +441,17 @@ public:
                     for(auto discard_json: discard_array) // since there's no char like '_' to split the string
                     {
                         std::string card_str = discard_json.get<std::string>();
-                        for(auto [rank_str, card_rank]: card_rank_from_str)
+                        for(auto& kv1: card_rank_from_str)
                         {
+                            std::string rank_str = kv1.first;
+                            Card_rank card_rank = kv1.second;
+
                             if(card_str.find(rank_str) != std::string::npos)
                             {
-                                for(auto [suit_str, suit]: suit_from_str)
+                                for(auto& kv2: suit_from_str)
                                 {
+                                    std::string suit_str = kv2.first;
+                                    Suit suit = kv2.second;
                                     if(card_str.find(suit_str) != std::string::npos)
                                     {
                                         discard_pile.push_back(Card( suit, card_rank, card_str ));
@@ -502,7 +509,7 @@ public:
                         enum Rank hand_score = score_hand( player->hand );
                         Card high_card = player->hand.at(0);
                         rank_to_player_map[hand_score].push_back(player_uuid);
-                        player_to_high_card_map.try_emplace( player_uuid, high_card );
+                        player_to_high_card_map.insert({ player_uuid, high_card });
                     }
                     enum Rank high_hand;
                     for(int i = 0; i < HAND_RANK_MAX; i++)
