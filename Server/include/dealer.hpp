@@ -195,7 +195,9 @@ public:
             },
             {HIGH_CARD, [](std::vector<Card>& hand)->bool{return true;}}, 
         };
+        
         std::sort(hand.begin(), hand.end(), [](const Card &a, const Card &b)->bool{return a.rank > b.rank;});
+        
         for(int i = 0; i < HAND_RANK_MAX; i++)
         {
             if(hand_score_table[static_cast<Rank>(i)](hand)==true)
@@ -203,6 +205,7 @@ public:
                 return static_cast<Rank>(i);
             }
         }
+
     return HAND_RANK_MAX;
     }
 
@@ -226,24 +229,44 @@ public:
                 player_to_high_card_map.insert({ player_uuid, high_card }); // create a map of player uuids to their hands' high cards
             }
         }
+        
         enum Rank high_hand; 
         for(int i = 0; i < HAND_RANK_MAX; i++) // checks all hands from highest to lowest
         {
             high_hand = static_cast<Rank>(i);
             if( rank_to_player_map.at(high_hand).size() > 0 ) break;
         }
+
         std::vector<std::string> winners; // create a vector of winner uuids, it is a vector to account for the rare case of a tie
+
         if(rank_to_player_map.at(high_hand).size() > 1) // if there is more than one player with the highest rank, attempt to tie break
         {
             std::unordered_map<Card_rank, std::vector<std::string>> high_card_vec_map; // maps high cards to vector of uuids
+            
             for(int i = 0; i < CARD_RANK_MAX; i++)
             {
                 high_card_vec_map.insert({static_cast<Card_rank>(i), {}});
             }
+
             for(auto player_uuid: rank_to_player_map.at(high_hand))
             {
-                high_card_vec_map.at(player_to_high_card_map.at(player_uuid).rank).push_back(player_uuid); // adds player to vec for each high rank
+                Card_rank player_high_card_rank;
+                std::vector<Card> hand_copy = player_lookup_umap.at(player_uuid).hand;
+                if(high_hand != HIGH_CARD)
+                {
+                    while(score_hand(hand_copy) == high_hand)
+                    {
+                        player_high_card_rank = hand_copy.at(0).rank;
+                        hand_copy.erase(hand_copy.begin());
+                    }
+                }
+                else
+                {
+                    player_high_card_rank = hand_copy.at(0).rank;
+                }
+                high_card_vec_map.at(player_high_card_rank).push_back(player_uuid);
             }
+
             for(int i = CARD_RANK_MAX - 1; i >= 0; i--) // iterates from highest card down
             {
                 if(high_card_vec_map.at(static_cast<Card_rank>(i)).size() > 0) // when it finds the highest card
@@ -257,6 +280,7 @@ public:
         {
             winners = rank_to_player_map.at(high_hand); // no tie break necessary, add them to the end
         }
+
         int sum_of_bets = 0;
         for(auto player_uuid: player_uuids)
         {
@@ -265,12 +289,14 @@ public:
             player->bet = 0;
             player->current_bet = 0;
         }
+
         int winnings_per_player = sum_of_bets / static_cast<int>(winners.size());
         for(auto player_uuid: winners)
         {
             Player* player = &player_lookup_umap.at(player_uuid);
             player->bank += winnings_per_player;
         }
+        
         return winners;
     }
 
@@ -278,6 +304,7 @@ public:
     {
         bool end_passed = false;
         bool last_player_folded = !player_lookup_umap.at(*turn_iter).is_active;
+        
         if(turn_iter != player_uuids.end())
         {
             advance(turn_iter, 1);
@@ -287,6 +314,7 @@ public:
             end_passed = true;
             turn_iter = player_uuids.begin();
         }
+        
         if(phase == BET_ONE || phase == BET_TWO) // skips over players who are folded or all in
         {
             while( turn_iter == player_uuids.end() || (!player_lookup_umap.at(*turn_iter).is_active || player_lookup_umap.at(*turn_iter).is_all_in))
@@ -317,6 +345,7 @@ public:
                 }
             }
         }
+        
         if(last_player_folded)
         {
             int active = 0;
@@ -329,6 +358,7 @@ public:
                 end_passed = true;
             }
         }
+        
         return end_passed;
     }
 
@@ -566,7 +596,7 @@ public:
                     bool bet_round_ended = advance_turn();
                     if(bet_round_ended)
                     {
-                        bool all_max = true;
+                        int active_count = 0;
                         for(auto player_uuid: player_uuids)
                         {
                             active_count += player_lookup_umap.at(player_uuid).is_active;
