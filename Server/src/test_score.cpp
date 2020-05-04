@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(all_hands_get_scored_within_bounds)
     }
 }
 
-BOOST_AUTO_TEST_CASE(hands_get_expected_score)
+BOOST_AUTO_TEST_CASE(score_royal_flush)
 {
     Game game;
     std::vector<Card> royal_flush = 
@@ -51,7 +51,11 @@ BOOST_AUTO_TEST_CASE(hands_get_expected_score)
         Card(SPADES, TEN, "10spades")
     };
     BOOST_CHECK(ROYAL_FLUSH == game.score_hand(royal_flush));
+}
 
+BOOST_AUTO_TEST_CASE(score_straight_flush)
+{
+    Game game;
     std::vector<Card> straight_flush = 
     {
         Card(SPADES, NINE, "9spades"),
@@ -61,37 +65,25 @@ BOOST_AUTO_TEST_CASE(hands_get_expected_score)
         Card(SPADES, TEN, "10spades")
     };
     BOOST_CHECK(STRAIGHT_FLUSH == game.score_hand(straight_flush));
+}
 
-    std::vector<Card> two_pair =
+BOOST_AUTO_TEST_CASE(score_four_kind)
+{
+    Game game;
+    std::vector<Card> four_kind =
     {
-        Card(DIAMONDS, TWO, "2diamonds"),
-        Card(SPADES, TWO, "2spades"),
-        Card(HEARTS, QUEEN, "queenhearts"),
-        Card(SPADES, QUEEN, "queenspades"),
-        Card(SPADES, TEN, "10spades")
+        Card(DIAMONDS, FOUR, "4diamonds"),
+        Card(HEARTS, FOUR, "4hearts"),
+        Card(CLUBS, FOUR, "4clubs"),
+        Card(SPADES, FOUR, "4spades"),
+        Card(SPADES, THREE, "3dpades")
     };
-    BOOST_CHECK(TWO_PAIR == game.score_hand(two_pair));
-    
-    std::vector<Card> three_kind =
-    {
-        Card(DIAMONDS, TWO, "2diamonds"),
-        Card(SPADES, TWO, "2spades"),
-        Card(HEARTS, TWO, "2hearts"),
-        Card(SPADES, QUEEN, "queenspades"),
-        Card(SPADES, TEN, "10spades")
-    };
-    BOOST_CHECK(THREE_KIND == game.score_hand(three_kind));
-    
-    std::vector<Card> flush = 
-    {
-        Card(SPADES, NINE, "9spades"),
-        Card(SPADES, KING, "kingspades"),
-        Card(SPADES, TWO, "2spades"),
-        Card(SPADES, JACK, "jackspades"),
-        Card(SPADES, TEN, "10spades")
-    };
-    BOOST_CHECK(FLUSH == game.score_hand(flush));
+    BOOST_CHECK(FOUR_KIND == game.score_hand(four_kind));
+}
 
+BOOST_AUTO_TEST_CASE(score_full_house)
+{
+    Game game;
     std::vector<Card> full_house =
     {
         Card(DIAMONDS, TWO, "2diamonds"),
@@ -101,42 +93,91 @@ BOOST_AUTO_TEST_CASE(hands_get_expected_score)
         Card(SPADES, TEN, "10spades")
     };
     BOOST_CHECK(FULL_HOUSE == game.score_hand(full_house));
+}
 
+BOOST_AUTO_TEST_CASE(score_flush)
+{
+    Game game;
+    std::vector<Card> flush = 
+    {
+        Card(SPADES, NINE, "9spades"),
+        Card(SPADES, KING, "kingspades"),
+        Card(SPADES, TWO, "2spades"),
+        Card(SPADES, JACK, "jackspades"),
+        Card(SPADES, TEN, "10spades")
+    };
+    BOOST_CHECK(FLUSH == game.score_hand(flush));
+}
+
+BOOST_AUTO_TEST_CASE(score_straight)
+{
+    Game game;
+    std::vector<Card> straight =
+    {
+        Card(SPADES, TWO, "2spades"),
+        Card(DIAMONDS, THREE, "3diamonds"),
+        Card(HEARTS, FOUR, "4hearts"),
+        Card(CLUBS, FIVE, "5clubs"),
+        Card(CLUBS, SIX, "6clubs")
+    };
+    BOOST_CHECK(STRAIGHT == game.score_hand(straight));
+}
+
+BOOST_AUTO_TEST_CASE(score_three_kind)
+{
+    Game game;
+    std::vector<Card> three_kind =
+    {
+        Card(DIAMONDS, TWO, "2diamonds"),
+        Card(SPADES, TWO, "2spades"),
+        Card(HEARTS, TWO, "2hearts"),
+        Card(SPADES, QUEEN, "queenspades"),
+        Card(SPADES, TEN, "10spades")
+    };
+    BOOST_CHECK(THREE_KIND == game.score_hand(three_kind));
+}
+
+BOOST_AUTO_TEST_CASE(score_two_pair)
+{
+    Game game;
+    std::vector<Card> two_pair =
+    {
+        Card(DIAMONDS, TWO, "2diamonds"),
+        Card(SPADES, TWO, "2spades"),
+        Card(HEARTS, QUEEN, "queenhearts"),
+        Card(SPADES, QUEEN, "queenspades"),
+        Card(SPADES, TEN, "10spades")
+    };
+    BOOST_CHECK(TWO_PAIR == game.score_hand(two_pair));
+}
+
+BOOST_AUTO_TEST_CASE(score_pair)
+{
+    Game game;
+    std::vector<Card> pair =
+    {
+        Card(SPADES, JACK, "jackspades"),
+        Card(HEARTS, JACK, "jackhearts"),
+        Card(HEARTS, TEN, "10hearts"),
+        Card(DIAMONDS, THREE, "3diamonds"),
+        Card(CLUBS, SIX, "6clubs"),
+    };
+    BOOST_CHECK(PAIR == game.score_hand(pair));
+}
+
+BOOST_AUTO_TEST_CASE(score_high_card)
+{
+    Game game;
+    std::vector<Card> high_card =
+    {
+        Card(SPADES, JACK, "jackspades"),
+        Card(HEARTS, KING, "kinghearts"),
+        Card(HEARTS, TEN, "10hearts"),
+        Card(DIAMONDS, THREE, "3diamonds"),
+        Card(CLUBS, SIX, "6clubs"),
+    };
+    BOOST_CHECK(HIGH_CARD == game.score_hand(high_card));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
 
-/*
-int main(int argc, char* argv[])
-{
-    std::unordered_map<Rank, std::string> hand_rank_names 
-    {
-        {ROYAL_FLUSH, "Royal Flush"}, {STRAIGHT_FLUSH, "Straight Flush"}, {FOUR_KIND, "Four of a Kind"}, 
-        {FULL_HOUSE, "Full House"}, {FLUSH, "Flush"}, {STRAIGHT, "Straight"}, 
-        {THREE_KIND, "Three of a Kind"}, {TWO_PAIR, "Two Pairs"}, {PAIR, "Pair"}, {HIGH_CARD, "High Card"}
-    };
-    Game game;
-    std::vector<std::vector<Card>> hands;
-    std::cout << "HAND SCORING TEST" << std::endl;
-    
-    for(unsigned int i = 0; i < 5; i++)
-    {
-        std::vector<Card> hand;
-        game.deal_to_hand(game.deck, hand);
-        hands.push_back(hand);
-    }
-
-    for(unsigned int i = 0; i < hands.size(); i++)
-    {
-        std::cout << "Hand " << i << " contents: "; 
-        for(auto card: hands.at(i))
-        {
-            std::cout << card.str << " ";
-        }
-        std::cout << std::endl;
-        
-        Rank hand_score = game.score_hand(hands.at(i));
-        std::cout << "Hand " << i << " score: " << hand_rank_names.at(hand_score) << std::endl;
-    }
-}
-*/
