@@ -206,6 +206,74 @@ public:
     return HAND_RANK_MAX;
     }
 
+    std::vector<std::string> determine_winner(std::vector<std::string> player_uuids)
+    {
+        std::unordered_map<Rank, std::vector<std::string>> rank_to_player_map;
+        for(int i = 0; i < HAND_RANK_MAX; i++)
+        {
+            rank_to_player_map.insert({static_cast<Rank>(i), {}});
+        }
+
+        std::unordered_map<std::string, Card> player_to_high_card_map;
+        for(auto player_uuid: player_uuids)
+        {
+            Player* player = &player_lookup_umap.at(player_uuid);
+            if(player->is_active)
+            {
+                enum Rank hand_score = score_hand( player->hand ); // scores player hand
+                Card high_card = player->hand.at(0); // cards will have been sorted during scoring; highest card will be first
+                rank_to_player_map.at(hand_score).push_back(player_uuid); // create a map of hand_scores to player uuids
+                player_to_high_card_map.insert({ player_uuid, high_card }); // create a map of player uuids to their hands' high cards
+            }
+        }
+        enum Rank high_hand; 
+        for(int i = 0; i < HAND_RANK_MAX; i++) // checks all hands from highest to lowest
+        {
+            high_hand = static_cast<Rank>(i);
+            if( rank_to_player_map.at(high_hand).size() > 0 ) break;
+        }
+        std::vector<std::string> winners; // create a vector of winner uuids, it is a vector to account for the rare case of a tie
+        if(rank_to_player_map.at(high_hand).size() > 1) // if there is more than one player with the highest rank, attempt to tie break
+        {
+            std::unordered_map<Card_rank, std::vector<std::string>> high_card_vec_map; // maps high cards to vector of uuids
+            for(int i = 0; i < CARD_RANK_MAX; i++)
+            {
+                high_card_vec_map.insert({static_cast<Card_rank>(i), {}});
+            }
+            for(auto player_uuid: rank_to_player_map.at(high_hand))
+            {
+                high_card_vec_map.at(player_to_high_card_map.at(player_uuid).rank).push_back(player_uuid); // adds player to vec for each high rank
+            }
+            for(int i = CARD_RANK_MAX - 1; i >= 0; i--) // iterates from highest card down
+            {
+                if(high_card_vec_map.at(static_cast<Card_rank>(i)).size() > 0) // when it finds the highest card
+                {
+                    winners = high_card_vec_map.at(static_cast<Card_rank>(i)); // winners vector assigned the list of players there
+                    break;
+                }
+            }
+        }
+        else if(rank_to_player_map.at(high_hand).size() == 1) // if there's only one winner
+        {
+            winners = rank_to_player_map.at(high_hand); // no tie break necessary, add them to the end
+        }
+        int sum_of_bets = 0;
+        for(auto player_uuid: player_uuids)
+        {
+            Player* player = &player_lookup_umap.at(player_uuid);
+            sum_of_bets+=player->bet;
+            player->bet = 0;
+            player->current_bet = 0;
+        }
+        int winnings_per_player = sum_of_bets / static_cast<int>(winners.size());
+        for(auto player_uuid: winners)
+        {
+            Player* player = &player_lookup_umap.at(player_uuid);
+            player->bank += winnings_per_player;
+        }
+        return winners;
+    }
+
     bool advance_turn() // advances turn to next eligible player
     {
         bool end_passed = false;
@@ -328,7 +396,6 @@ public:
         json to_players;
         // according to the game phase, modify the game state, and record the new game state in a json object
         const Game_phase phase_now = phase;
-
         switch(phase_now)
         {
 
@@ -409,15 +476,21 @@ public:
                     if(bet_round_ended)
                     {
                         bool all_max = true;
+                        int active_count = 0;
                         for(auto player_uuid: player_uuids)
                         {
                             Player* one_player = &player_lookup_umap.at(player_uuid);
                             if(one_player->bet != max_bet && one_player->is_active) all_max = false;
+                            active_count += one_player->is_active;
                         }
                         // assess whether all active players have the same bet; if so, proceed to next phase DRAW
-                        if(all_max)
+                        if(all_max && active_count > 1)
                         {
                             phase = DRAW;
+                        }
+                        else if(all_max && active_count == 1)
+                        {
+                            phase = SHOWDOWN;
                         }
                     }
                 }
@@ -495,54 +568,15 @@ public:
 
             case SHOWDOWN: 
                 {
-                    std::unordered_map<Rank, std::vector<std::string>> rank_to_player_map;
-                    std::unordered_map<std::string, Card> player_to_high_card_map;
-                    for(auto player_uuid: player_uuids)
+                    
+                    std::vector<std::string> winner_uuids = determine_winner(player_uuids);
+                    json winner_uuids_json(json::value_t::array);
+                    for(auto winner_uuid: winner_uuids)
                     {
-                        Player* player = &player_lookup_umap.at(player_uuid);
-                        enum Rank hand_score = score_hand( player->hand );
-                        Card high_card = player->hand.at(0);
-                        rank_to_player_map[hand_score].push_back(player_uuid);
-                        player_to_high_card_map.insert({ player_uuid, high_card });
+                        winner_uuids_json.push_back(winner_uuid);
                     }
-                    enum Rank high_hand;
-                    for(int i = 0; i < HAND_RANK_MAX; i++)
-                    {
-                        high_hand = static_cast<Rank>(i);
-                        if(rank_to_player_map.at(high_hand).size() > 0) break;
-                    }
-                    std::vector<std::string> winners;
-                    if(rank_to_player_map.at(high_hand).size() > 1)
-                    {
-                        std::unordered_map<Card_rank, std::vector<std::string>> high_card_vec_map;
-                        for(auto player_uuid: rank_to_player_map.at(high_hand))
-                        {
-                            high_card_vec_map[player_to_high_card_map.at(player_uuid).rank].push_back(player_uuid);
-                        }
-                        for(int i = CARD_RANK_MAX - 1; i >= 0; i--)
-                        {
-                            if(high_card_vec_map.at(static_cast<Card_rank>(i)).size() > 0)
-                            {
-                                winners = high_card_vec_map.at(static_cast<Card_rank>(i));
-                            }
-                        }
-                    }
-                    to_players["winners"] = {};
-                    int sum_of_bets = 0;
-                    for(auto player_uuid: player_uuids)
-                    {
-                        Player* player = &player_lookup_umap.at(player_uuid);
-                        sum_of_bets+=player->bet;
-                        player->bet = 0;
-                        player->current_bet = 0;
-                    }
-                    int winnings_per_player = sum_of_bets / static_cast<int>(winners.size());
-                    for(auto player_uuid: winners)
-                    {
-                        Player* player = &player_lookup_umap.at(player_uuid);
-                        player->bank += winnings_per_player;
-                        to_players["winners"].push_back(player_uuid);
-                    }
+                    to_players["winners"] = winner_uuids_json;
+                    break;
                 }
                 break;
 
