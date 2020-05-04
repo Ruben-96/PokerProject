@@ -561,20 +561,22 @@ public:
                     Bet_options bet_option = bet_option_from_str.at(player_event);
                     bet_transactions(player, bet_option, to_dealer, to_players);
 
+                    if(bet_option == RAISE) { was_raise_in_round = true; };
+                    
                     bool bet_round_ended = advance_turn();
                     if(bet_round_ended)
                     {
                         bool all_max = true;
                         for(auto player_uuid: player_uuids)
                         {
-                            Player* one_player = &player_lookup_umap.at(player_uuid);
-                            if(one_player->bet != max_bet && one_player->is_active) all_max = false;
+                            active_count += player_lookup_umap.at(player_uuid).is_active;
                         }
                         // assess whether all active players have the same bet; if so, proceed to next phase DRAW
-                        if(all_max)
+                        if((!was_raise_in_round && active_count > 1) || active_count == 1)
                         {
                             phase = SHOWDOWN;
                         }
+                        was_raise_in_round = false;
                     }
                 }
                 if(phase != SHOWDOWN)
