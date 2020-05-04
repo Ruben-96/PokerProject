@@ -280,24 +280,24 @@ BOOST_AUTO_TEST_CASE(tie_is_broken_low)
         Card(CLUBS, QUEEN, "queenclubs"),
         Card(SPADES, FOUR, "4spades"),
         Card(DIAMONDS, TWO, "2diamonds")
-    }; // straight flush 
+    }; // high pair 
 
     marge->is_active = true;
     marge->hand = 
     {
-        Card(CLUBS, ACE, "aceclubs"),
+        Card(CLUBS, TWO, "aceclubs"),
         Card(SPADES, TEN, "10spades"),
         Card(HEARTS, EIGHT, "8hearts"),
         Card(SPADES, SEVEN, "7spades"),
         Card(HEARTS, SEVEN, "7hearts")
-    }; // straight flush, marge should win
+    }; // low pair
     
     BOOST_TEST_CHECKPOINT( "Preparing " << game.player_uuids.size() << " players to be determined" );
     std::vector<std::string> winners = game.determine_winner(game.player_uuids);
     BOOST_TEST_CHECKPOINT( "" << winners.size() << " player(s) win" );
     BOOST_CHECK( winners.size() == 1 );
-    BOOST_CHECK( std::find( winners.begin(), winners.end(), homer->uuid_str ) == winners.end() );
-    BOOST_CHECK( std::find( winners.begin(), winners.end(), marge->uuid_str ) != winners.end() );
+    BOOST_CHECK( std::find( winners.begin(), winners.end(), homer->uuid_str ) != winners.end() );
+    BOOST_CHECK( std::find( winners.begin(), winners.end(), marge->uuid_str ) == winners.end() );
 }
 
 BOOST_AUTO_TEST_CASE(tie_is_handled)
@@ -316,6 +316,8 @@ BOOST_AUTO_TEST_CASE(tie_is_handled)
     Player* maggie = &game.player_lookup_umap.at("maggie");
 
     homer->is_active = true;
+    homer->bank = 0;
+    homer->bet = 100;
     homer->hand = 
     {
         Card(SPADES, ACE, "acespades"),
@@ -326,6 +328,8 @@ BOOST_AUTO_TEST_CASE(tie_is_handled)
     }; // royal flush, homer should win 
 
     marge->is_active = true;
+    marge->bank = 0;
+    marge->bet = 100;
     marge->hand = 
     {
         Card(HEARTS, ACE, "acespades"),
@@ -336,6 +340,8 @@ BOOST_AUTO_TEST_CASE(tie_is_handled)
     }; // royal flush, marge should also win
 
     bart->is_active = true;
+    bart->bank = 0;
+    bart->bet = 100;
     bart->hand =
     {
         Card(DIAMONDS, TWO, "2diamonds"),
@@ -346,6 +352,8 @@ BOOST_AUTO_TEST_CASE(tie_is_handled)
     }; // two pair 
     
     lisa->is_active = true;
+    lisa->bank = 0;
+    lisa->bet = 100;
     lisa->hand =
     {
         Card(DIAMONDS, TWO, "2diamonds"),
@@ -356,6 +364,8 @@ BOOST_AUTO_TEST_CASE(tie_is_handled)
     }; // three kind 
     
     maggie->is_active = true;
+    maggie->bank = 0;
+    maggie->bet = 100;
     maggie->hand = 
     {
         Card(SPADES, NINE, "9spades"),
@@ -373,6 +383,11 @@ BOOST_AUTO_TEST_CASE(tie_is_handled)
     BOOST_CHECK( std::find( winners.begin(), winners.end(), bart->uuid_str ) == winners.end() );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), lisa->uuid_str ) == winners.end() );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), maggie->uuid_str ) == winners.end() );
+    BOOST_CHECK( homer->bank == 250 );
+    BOOST_CHECK( marge->bank == 250 );
+    BOOST_CHECK( bart->bank == 0 );
+    BOOST_CHECK( lisa->bank == 0 );
+    BOOST_CHECK( maggie->bank == 0 );
 }
 
 BOOST_AUTO_TEST_CASE(skips_inactive_player)
