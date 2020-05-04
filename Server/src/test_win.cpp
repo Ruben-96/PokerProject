@@ -184,6 +184,7 @@ BOOST_AUTO_TEST_CASE(winnings_are_distributed_properly)
     BOOST_CHECK( lisa->bank == 0 );
     BOOST_CHECK( maggie->bank == 99 );
 }
+
 BOOST_AUTO_TEST_CASE(tie_is_broken)
 {
     Game game;
@@ -257,6 +258,46 @@ BOOST_AUTO_TEST_CASE(tie_is_broken)
     BOOST_CHECK( std::find( winners.begin(), winners.end(), bart->uuid_str ) == winners.end() );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), lisa->uuid_str ) == winners.end() );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), maggie->uuid_str ) == winners.end() );
+}
+
+BOOST_AUTO_TEST_CASE(tie_is_broken_low)
+{
+    Game game;
+    game.player_uuids = {"homer","marge"};
+    
+    for(auto player_uuid: game.player_uuids)
+    {
+        game.player_lookup_umap.insert({player_uuid, Player(player_uuid, player_uuid)});
+    }
+    Player* homer = &game.player_lookup_umap.at("homer");
+    Player* marge = &game.player_lookup_umap.at("marge");
+
+    homer->is_active = true;
+    homer->hand = 
+    {
+        Card(DIAMONDS, KING, "kingdiamonds"),
+        Card(SPADES, KING, "kingspades"),
+        Card(CLUBS, QUEEN, "queenclubs"),
+        Card(SPADES, FOUR, "4spades"),
+        Card(DIAMONDS, TWO, "2diamonds")
+    }; // straight flush 
+
+    marge->is_active = true;
+    marge->hand = 
+    {
+        Card(CLUBS, ACE, "aceclubs"),
+        Card(SPADES, TEN, "10spades"),
+        Card(HEARTS, EIGHT, "8hearts"),
+        Card(SPADES, SEVEN, "7spades"),
+        Card(HEARTS, SEVEN, "7hearts")
+    }; // straight flush, marge should win
+    
+    BOOST_TEST_CHECKPOINT( "Preparing " << game.player_uuids.size() << " players to be determined" );
+    std::vector<std::string> winners = game.determine_winner(game.player_uuids);
+    BOOST_TEST_CHECKPOINT( "" << winners.size() << " player(s) win" );
+    BOOST_CHECK( winners.size() == 1 );
+    BOOST_CHECK( std::find( winners.begin(), winners.end(), homer->uuid_str ) == winners.end() );
+    BOOST_CHECK( std::find( winners.begin(), winners.end(), marge->uuid_str ) != winners.end() );
 }
 
 BOOST_AUTO_TEST_CASE(tie_is_handled)

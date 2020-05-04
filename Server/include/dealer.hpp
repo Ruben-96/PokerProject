@@ -277,6 +277,7 @@ public:
     bool advance_turn() // advances turn to next eligible player
     {
         bool end_passed = false;
+        bool last_player_folded = !player_lookup_umap.at(*turn_iter).is_active;
         if(turn_iter != player_uuids.end())
         {
             advance(turn_iter, 1);
@@ -314,6 +315,18 @@ public:
                 {
                     advance(turn_iter, 1);
                 }
+            }
+        }
+        if(last_player_folded)
+        {
+            int active = 0;
+            for(auto player_uuid: player_uuids)
+            {
+                active += player_lookup_umap.at(player_uuid).is_active;
+            }
+            if(active == 1) // if only one active player remains, ends the betting round
+            {
+                end_passed = true;
             }
         }
         return end_passed;
@@ -467,36 +480,38 @@ public:
                     std::string player_event = to_dealer["event"].get<std::string>();
                     Bet_options bet_option = bet_option_from_str.at(player_event);
                     bet_transactions(player, bet_option, to_dealer, to_players);
-
-                    printf("advancing turn\n");
+                    
+                    if(bet_option == RAISE) { was_raise_in_round = true; };
+                    
                     bool bet_round_ended = advance_turn();
                     
-                    printf("turn advanced\n");
 
                     if(bet_round_ended)
                     {
-                        bool all_max = true;
                         int active_count = 0;
                         for(auto player_uuid: player_uuids)
                         {
-                            Player* one_player = &player_lookup_umap.at(player_uuid);
-                            if(one_player->bet != max_bet && one_player->is_active) all_max = false;
-                            active_count += one_player->is_active;
+                            active_count += player_lookup_umap.at(player_uuid).is_active;
                         }
                         // assess whether all active players have the same bet; if so, proceed to next phase DRAW
-                        if(all_max && active_count > 1)
+                        if(!was_raise_in_round && active_count > 1)
                         {
                             phase = DRAW;
                         }
-                        else if(all_max && active_count == 1)
+                        else if(active_count == 1)
                         {
                             phase = SHOWDOWN;
                         }
+                        was_raise_in_round = false;
                     }
                 }
-                break;
+                if(phase != SHOWDOWN)
+                {
+                    break;
+                }
 
             case DRAW: // players send a list of cards to be replaced; those are removed from their hands and new cards are dealt; one round
+                if (phase!= SHOWDOWN)
                 {
                     assert(to_dealer["event"].get<std::string>() == "request_cards");
                     assert(to_dealer["from"]["uuid"].get<std::string>() == *turn_iter);
@@ -531,10 +546,11 @@ public:
 
                     bool round_ended = advance_turn();
                     if(round_ended) phase = BET_TWO;
+                    break;
                 }
-                break;
 
             case BET_TWO: // same as above but no 0 bets are allowed
+                if(phase != SHOWDOWN)
                 {
                     std::string current_player_uuid = to_dealer["from"]["uuid"].get<std::string>();
                     assert(current_player_uuid == *turn_iter);
@@ -568,7 +584,6 @@ public:
 
             case SHOWDOWN: 
                 {
-                    
                     std::vector<std::string> winner_uuids = determine_winner(player_uuids);
                     json winner_uuids_json(json::value_t::array);
                     for(auto winner_uuid: winner_uuids)
@@ -598,6 +613,8 @@ public:
                 dealt_hand["uuid"] = player->uuid_str;
                 dealt_hand["name"] = player->name;
                 dealt_hand["final_bank"] = player->bank;
+                dealt_hand["is_active"] = player->is_active;
+                dealt_hand["is_all_in"] = player->is_all_in;
                 json hand_json(json::value_t::array);
                 for(auto card: player->hand)
                 {
@@ -637,7 +654,7 @@ public:
     int max_bet; // records current highest bet for betting logic
     std::vector<Card> deck; // deck of cards
     int ante = 100;
-
+    int was_raise_in_round = false;
     // maps to get string representations from enums and vice versa
     std::unordered_map<Suit, std::string> suit_to_str
     {
