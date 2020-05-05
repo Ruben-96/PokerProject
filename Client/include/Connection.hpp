@@ -6,8 +6,11 @@
 #include <thread>
 #include "asio.hpp"
 #include "chat_message.hpp"
+#include "json.hpp"
 
 using asio::ip::tcp;
+
+typedef nlohmann::json json;
 
 typedef std::deque<chat_message> chat_message_queue;
 
@@ -17,6 +20,7 @@ class CONNECTION{
         tcp::socket socket_;
         chat_message read_msg_;
         chat_message_queue write_msgs_;
+        json fromServer;
 
     public:
         CONNECTION(asio::io_context& io_context, const tcp::resolver::results_type& endpoints) : io_context_(io_context), socket_(io_context){

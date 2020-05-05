@@ -8,6 +8,12 @@
 #include "Connection.hpp"
 #include "json.hpp"
 #include "asio.hpp"
+#include "chat_message.hpp"
+
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include <boost/lexical_cast.hpp>
 
 using asio::ip::tcp;
 typedef nlohmann::json json;
@@ -22,6 +28,9 @@ class UI{
         asio::io_context *io_context;
         std::thread *thread;
         //Data Variables
+        bool inGame = false;
+        std::string name;
+        std::string uuid;
         json fromServer;
         json toServer;
         //Login Screen
@@ -52,6 +61,7 @@ class UI{
         Gtk::Button *btn_check;
         Gtk::Button *btn_fold;
         Gtk::Label *lbl_player_bank;
+        Gtk::ListBox *list_chat;
         //Spectate Screen
         Gtk::Button *btn_leave_spectate;
         //Game Variables
@@ -63,13 +73,7 @@ class UI{
             thread = NULL;
             io_context = NULL;
             //Data Variables
-            toServer["from"]["name"] = "";
-            toServer["from"]["uuid"] = "";
-            toServer["cards_requested"] = 0;
-            toServer["chat"] = "";
-            toServer["event"] = "";
-            toServer["total_bet"] = 0;
-            toServer["current_bet"] = 0;
+            uuid = boost::uuids::to_string(boost::uuids::random_generator()());
             //Login Screen
             builder->get_widget("Window", window);
             builder->get_widget("Stack", stack);
@@ -98,6 +102,7 @@ class UI{
             builder->get_widget("btn_check", btn_check);
             builder->get_widget("btn_fold", btn_fold);
             builder->get_widget("lbl_player_bank", lbl_player_bank);
+            builder->get_widget("list_chat", list_chat);
             //Spectate Screen
             builder->get_widget("btn_leave_spectate", btn_leave_spectate);
 
@@ -106,19 +111,76 @@ class UI{
             btn_spectate->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&spectate_game), this));
             //Game Screen
             btn_leave_game->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
+            btn_raise->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&raise_), this));
+            btn_bet->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&bet), this));
+            btn_allin->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&allin), this));
+            btn_call->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&call), this));
+            btn_check->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&check), this));
+            btn_fold->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&fold), this));
             //Spectate Screen
             btn_leave_spectate->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
         }
         Gtk::Window *get_window(){
             return this->window;
         }
+        void send_info(){
+            toServer["from"]["name"] = name;
+            toServer["from"]["uuid"] = uuid;
+            chat_message msg;
+            std::string temp = toServer.dump();
+            msg.body_length(std::strlen(temp.c_str()));
+            std::memcpy(msg.body(), temp.c_str(), msg.body_length());
+            msg.encode_header();
+            connection->write(msg);
+        }
+        void send_move(std::string move){
+            toServer["from"]["name"] = name;
+            toServer["from"]["uuid"] = uuid;
+            toServer["chat"] = "";
+            toServer["event"] = move;
+            chat_message msg;
+            std::string temp = toServer.dump();
+            msg.body_length(std::strlen(temp.c_str()));
+            std::memcpy(msg.body(), temp.c_str(), msg.body_length());
+            msg.encode_header();
+            connection->write(msg);
+        }
+        static void update_fromServer(){
+
+        }
+        static void raise_(void *ui){
+            UI *tempUI = static_cast<UI *>(ui);
+            tempUI->send_move("raise");
+        }
+        static void bet(void *ui){
+            UI *tempUI = static_cast<UI *>(ui);
+            tempUI->send_move("bet");
+        }
+        static void allin(void *ui){
+            UI *tempUI = static_cast<UI *>(ui);
+            tempUI->send_move("allin");
+        }
+        static void call(void *ui){
+            UI *tempUI = static_cast<UI *>(ui);
+            tempUI->send_move("call");
+        }
+        static void check(void *ui){
+            UI *tempUI = static_cast<UI *>(ui);
+            tempUI->send_move("check");
+        }
+        static void fold(void *ui){
+            UI *tempUI = static_cast<UI *>(ui);
+            tempUI->send_move("fold");
+            tempUI->inGame = false;
+        }
         static void join_game(void *ui){
             UI *tempUI = static_cast<UI *>(ui);
             try{
                 tempUI->connect(tempUI->entry_ip->get_text(), tempUI->entry_port->get_text());
-                tempUI->toServer["from"]["name"] = tempUI->entry_name->get_text().raw();
-                tempUI->update_game_screen();
+                tempUI->name = tempUI->entry_name->get_text().raw();
                 tempUI->stack->set_visible_child("game_screen");
+                tempUI->send_info();
+                tempUI->inGame = true;
             } catch(std::exception &e){
                 tempUI->lbl_connection_error->set_visible(true);
             }
@@ -128,10 +190,10 @@ class UI{
             tcp::resolver resolver(*io_context);
             auto endpoints = resolver.resolve(ip, port);
             this->connection = new CONNECTION(*io_context, endpoints);
-            this->thread = new std::thread([this](){io_context->run();});
+            this->thread = new std::thread([this](){io_context->run(); update_fromServer();});
         }
         void update_game_screen(){
-            lbl_player_one->set_text(toServer["from"]["name"].dump());
+            
         }
         void update_spectate_screen(){
 
@@ -146,7 +208,10 @@ class UI{
             UI *tempUI = static_cast<UI *>(ui);
             try{
                 tempUI->connect(tempUI->entry_ip->get_text(), tempUI->entry_port->get_text());
-                tempUI->toServer["from"]["name"] = tempUI->entry_name->get_text().raw();
+                tempUI->name = tempUI->entry_name->get_text().raw();
+                tempUI->uuid = boost::uuids::to_string(boost::uuids::random_generator()());
+                tempUI->toServer["from"]["name"] = tempUI->name;
+                tempUI->toServer["from"]["uuid"] = tempUI->uuid;
                 tempUI->update_game_screen();
                 tempUI->stack->set_visible_child("spectate_screen");
             } catch(std::exception &e){
