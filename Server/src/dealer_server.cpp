@@ -212,7 +212,7 @@ int main(int argc, char* argv[])
         asio::io_context io_context;
 
         std::list<chat_server> servers;
-        tcp::endpoint endpoint(tcp::v4(), 9000);
+        tcp::endpoint endpoint(tcp::v4(), std::atoi(argv[1]));
         servers.emplace_back(io_context, endpoint, game);
         
         io_context.run();
