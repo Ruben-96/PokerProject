@@ -19,6 +19,19 @@
 
 using json = nlohmann::json;
 
+namespace std{
+   template<typename E>
+   struct hash{
+      typedef E argument_type;
+      typedef size_t result_type;
+      using sfinae = typename std::enable_if<std::is_enum<E>::value>::type;
+      result_type operator() (const E& e) const{
+         using base_t = typename std::underlying_type<E>::type;
+         return std::hash<base_t>()(static_cast<base_t>(e));
+      }
+   };
+}
+
 //----------------------------------------------------------------------
 
 enum Suit { SPADES, DIAMONDS, HEARTS, CLUBS, SUIT_MAX };
