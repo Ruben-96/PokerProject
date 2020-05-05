@@ -7,6 +7,11 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">../img/leave_game.png</property>
   </object>
+  <object class="GtkImage" id="image2">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">../img/leave_game.png</property>
+  </object>
   <object class="GtkWindow" id="Window">
     <property name="name">Window</property>
     <property name="can_focus">False</property>
@@ -164,6 +169,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="enter_game" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -180,6 +186,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
+                    <signal name="clicked" handler="spectate_game" swapped="no"/>
                   </object>
                   <packing>
                     <property name="expand">False</property>
@@ -454,6 +461,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="image">image1</property>
+                <signal name="clicked" handler="leave_game" swapped="no"/>
               </object>
               <packing>
                 <property name="x">1230</property>
@@ -662,7 +670,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkImage" id="img_card_on">
+              <object class="GtkImage" id="img_card_one">
                 <property name="name">img_card_one</property>
                 <property name="width_request">100</property>
                 <property name="height_request">80</property>
@@ -690,7 +698,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkButton" id="btn_leave_game1">
+              <object class="GtkButton" id="btn_leave_spectate">
                 <property name="name">btn_leave_game</property>
                 <property name="width_request">50</property>
                 <property name="height_request">50</property>
@@ -698,6 +706,7 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="image">image2</property>
+                <signal name="clicked" handler="leave_game" swapped="no"/>
               </object>
               <packing>
                 <property name="x">1230</property>
@@ -1240,10 +1249,5 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkImage" id="image2">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">../img/leave_game.png</property>
   </object>
 </interface>

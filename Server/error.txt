@@ -1,0 +1,1140 @@
+g++ -DASIO_STANDALONE -Wall -O0 -g -std=c++11 -I./include -I./asio-1.12.2/include   src/dealer_server.cpp  -lpthread -o src/dealer_server
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘struct std::__detail::_Hash_code_base<Suit, std::pair<const Suit, std::basic_string<char> >, std::__detail::_Select1st, std::hash<Suit>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1402:10:   required from ‘struct std::__detail::_Hashtable_base<Suit, std::pair<const Suit, std::basic_string<char> >, std::__detail::_Select1st, std::equal_to<Suit>, std::hash<Suit>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/hashtable.h:174:11:   required from ‘class std::_Hashtable<Suit, std::pair<const Suit, std::basic_string<char> >, std::allocator<std::pair<const Suit, std::basic_string<char> > >, std::__detail::_Select1st, std::equal_to<Suit>, std::hash<Suit>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/unordered_map.h:100:18:   required from ‘class std::unordered_map<Suit, std::basic_string<char> >’
+./include/dealer.hpp:664:5:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Suit>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Suit>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Suit>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Suit>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Suit>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Suit>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Suit>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Suit>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘struct std::__detail::_Hash_code_base<Card_rank, std::pair<const Card_rank, std::basic_string<char> >, std::__detail::_Select1st, std::hash<Card_rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1402:10:   required from ‘struct std::__detail::_Hashtable_base<Card_rank, std::pair<const Card_rank, std::basic_string<char> >, std::__detail::_Select1st, std::equal_to<Card_rank>, std::hash<Card_rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/hashtable.h:174:11:   required from ‘class std::_Hashtable<Card_rank, std::pair<const Card_rank, std::basic_string<char> >, std::allocator<std::pair<const Card_rank, std::basic_string<char> > >, std::__detail::_Select1st, std::equal_to<Card_rank>, std::hash<Card_rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/unordered_map.h:100:18:   required from ‘class std::unordered_map<Card_rank, std::basic_string<char> >’
+./include/dealer.hpp:669:5:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘struct std::__detail::_Hash_code_base<Bet_options, std::pair<const Bet_options, std::basic_string<char> >, std::__detail::_Select1st, std::hash<Bet_options>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1402:10:   required from ‘struct std::__detail::_Hashtable_base<Bet_options, std::pair<const Bet_options, std::basic_string<char> >, std::__detail::_Select1st, std::equal_to<Bet_options>, std::hash<Bet_options>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/hashtable.h:174:11:   required from ‘class std::_Hashtable<Bet_options, std::pair<const Bet_options, std::basic_string<char> >, std::allocator<std::pair<const Bet_options, std::basic_string<char> > >, std::__detail::_Select1st, std::equal_to<Bet_options>, std::hash<Bet_options>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/unordered_map.h:100:18:   required from ‘class std::unordered_map<Bet_options, std::basic_string<char> >’
+./include/dealer.hpp:682:5:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Bet_options>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Bet_options>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Bet_options>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Bet_options>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Bet_options>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Bet_options>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Bet_options>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Bet_options>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘struct std::__detail::_Hash_code_base<Game_phase, std::pair<const Game_phase, std::basic_string<char> >, std::__detail::_Select1st, std::hash<Game_phase>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1402:10:   required from ‘struct std::__detail::_Hashtable_base<Game_phase, std::pair<const Game_phase, std::basic_string<char> >, std::__detail::_Select1st, std::equal_to<Game_phase>, std::hash<Game_phase>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/hashtable.h:174:11:   required from ‘class std::_Hashtable<Game_phase, std::pair<const Game_phase, std::basic_string<char> >, std::allocator<std::pair<const Game_phase, std::basic_string<char> > >, std::__detail::_Select1st, std::equal_to<Game_phase>, std::hash<Game_phase>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/unordered_map.h:100:18:   required from ‘class std::unordered_map<Game_phase, std::basic_string<char> >’
+./include/dealer.hpp:691:5:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Game_phase>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Game_phase>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Game_phase>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Game_phase>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Game_phase>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Game_phase>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Game_phase>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Game_phase>’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp: In constructor ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Suit; _Tp = std::basic_string<char>; _Hash = std::hash<Suit>; _Pred = std::equal_to<Suit>; _Alloc = std::allocator<std::pair<const Suit, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Suit, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Suit>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Suit>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Suit, std::basic_string<char> > >]’:
+./include/dealer.hpp:664:5: error: invalid use of incomplete type ‘std::unordered_map<Suit, std::basic_string<char> >::hasher {aka struct std::hash<Suit>}’
+     };
+     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘std::unordered_map<Suit, std::basic_string<char> >::hasher {aka struct std::hash<Suit>}’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp:664:5: note:   when instantiating default argument for call to std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Suit; _Tp = std::basic_string<char>; _Hash = std::hash<Suit>; _Pred = std::equal_to<Suit>; _Alloc = std::allocator<std::pair<const Suit, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Suit, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Suit>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Suit>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Suit, std::basic_string<char> > >]
+     };
+     ^
+./include/dealer.hpp: In constructor ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = std::basic_string<char>; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Card_rank, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >]’:
+./include/dealer.hpp:669:5: error: invalid use of incomplete type ‘std::unordered_map<Card_rank, std::basic_string<char> >::hasher {aka struct std::hash<Card_rank>}’
+     };
+     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘std::unordered_map<Card_rank, std::basic_string<char> >::hasher {aka struct std::hash<Card_rank>}’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp:669:5: note:   when instantiating default argument for call to std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = std::basic_string<char>; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Card_rank, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >]
+     };
+     ^
+./include/dealer.hpp: In constructor ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Bet_options; _Tp = std::basic_string<char>; _Hash = std::hash<Bet_options>; _Pred = std::equal_to<Bet_options>; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Bet_options, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Bet_options>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Bet_options>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >]’:
+./include/dealer.hpp:682:5: error: invalid use of incomplete type ‘std::unordered_map<Bet_options, std::basic_string<char> >::hasher {aka struct std::hash<Bet_options>}’
+     };
+     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘std::unordered_map<Bet_options, std::basic_string<char> >::hasher {aka struct std::hash<Bet_options>}’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp:682:5: note:   when instantiating default argument for call to std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Bet_options; _Tp = std::basic_string<char>; _Hash = std::hash<Bet_options>; _Pred = std::equal_to<Bet_options>; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Bet_options, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Bet_options>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Bet_options>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >]
+     };
+     ^
+./include/dealer.hpp: In constructor ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Game_phase; _Tp = std::basic_string<char>; _Hash = std::hash<Game_phase>; _Pred = std::equal_to<Game_phase>; _Alloc = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Game_phase, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Game_phase>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Game_phase>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >]’:
+./include/dealer.hpp:691:5: error: invalid use of incomplete type ‘std::unordered_map<Game_phase, std::basic_string<char> >::hasher {aka struct std::hash<Game_phase>}’
+     };
+     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘std::unordered_map<Game_phase, std::basic_string<char> >::hasher {aka struct std::hash<Game_phase>}’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp:691:5: note:   when instantiating default argument for call to std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Game_phase; _Tp = std::basic_string<char>; _Hash = std::hash<Game_phase>; _Pred = std::equal_to<Game_phase>; _Alloc = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Game_phase, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Game_phase>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Game_phase>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >]
+     };
+     ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘struct std::__detail::_Hash_code_base<Rank, std::pair<const Rank, std::function<bool(std::vector<Card>&)> >, std::__detail::_Select1st, std::hash<Rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1402:10:   required from ‘struct std::__detail::_Hashtable_base<Rank, std::pair<const Rank, std::function<bool(std::vector<Card>&)> >, std::__detail::_Select1st, std::equal_to<Rank>, std::hash<Rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/hashtable.h:174:11:   required from ‘class std::_Hashtable<Rank, std::pair<const Rank, std::function<bool(std::vector<Card>&)> >, std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >, std::__detail::_Select1st, std::equal_to<Rank>, std::hash<Rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/unordered_map.h:100:18:   required from ‘class std::unordered_map<Rank, std::function<bool(std::vector<Card>&)> >’
+./include/dealer.hpp:126:79:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘struct std::__detail::_Hash_code_base<Card_rank, std::pair<const Card_rank, int>, std::__detail::_Select1st, std::hash<Card_rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1402:10:   required from ‘struct std::__detail::_Hashtable_base<Card_rank, std::pair<const Card_rank, int>, std::__detail::_Select1st, std::equal_to<Card_rank>, std::hash<Card_rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/hashtable.h:174:11:   required from ‘class std::_Hashtable<Card_rank, std::pair<const Card_rank, int>, std::allocator<std::pair<const Card_rank, int> >, std::__detail::_Select1st, std::equal_to<Card_rank>, std::hash<Card_rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/unordered_map.h:100:18:   required from ‘class std::unordered_map<Card_rank, int>’
+./include/dealer.hpp:146:56:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp: In constructor ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = int; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, int> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, int> >]’:
+./include/dealer.hpp:146:56: error: invalid use of incomplete type ‘std::unordered_map<Card_rank, int>::hasher {aka struct std::hash<Card_rank>}’
+                     std::unordered_map<Card_rank, int> card_count;
+                                                        ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘std::unordered_map<Card_rank, int>::hasher {aka struct std::hash<Card_rank>}’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp:146:56: note:   when instantiating default argument for call to std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = int; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, int> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, int> >]
+                     std::unordered_map<Card_rank, int> card_count;
+                                                        ^
+./include/dealer.hpp:176:56: error: invalid use of incomplete type ‘std::unordered_map<Card_rank, int>::hasher {aka struct std::hash<Card_rank>}’
+                     std::unordered_map<Card_rank, int> card_count;
+                                                        ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘std::unordered_map<Card_rank, int>::hasher {aka struct std::hash<Card_rank>}’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp:176:56: note:   when instantiating default argument for call to std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = int; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, int> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, int> >]
+                     std::unordered_map<Card_rank, int> card_count;
+                                                        ^
+./include/dealer.hpp: In constructor ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Rank; _Tp = std::function<bool(std::vector<Card>&)>; _Hash = std::hash<Rank>; _Pred = std::equal_to<Rank>; _Alloc = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Rank, std::function<bool(std::vector<Card>&)> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >]’:
+./include/dealer.hpp:197:9: error: invalid use of incomplete type ‘std::unordered_map<Rank, std::function<bool(std::vector<Card>&)> >::hasher {aka struct std::hash<Rank>}’
+         };
+         ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘std::unordered_map<Rank, std::function<bool(std::vector<Card>&)> >::hasher {aka struct std::hash<Rank>}’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp:197:9: note:   when instantiating default argument for call to std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Rank; _Tp = std::function<bool(std::vector<Card>&)>; _Hash = std::hash<Rank>; _Pred = std::equal_to<Rank>; _Alloc = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Rank, std::function<bool(std::vector<Card>&)> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >]
+         };
+         ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘struct std::__detail::_Hash_code_base<Rank, std::pair<const Rank, std::vector<std::basic_string<char> > >, std::__detail::_Select1st, std::hash<Rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1402:10:   required from ‘struct std::__detail::_Hashtable_base<Rank, std::pair<const Rank, std::vector<std::basic_string<char> > >, std::__detail::_Select1st, std::equal_to<Rank>, std::hash<Rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/hashtable.h:174:11:   required from ‘class std::_Hashtable<Rank, std::pair<const Rank, std::vector<std::basic_string<char> > >, std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >, std::__detail::_Select1st, std::equal_to<Rank>, std::hash<Rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/unordered_map.h:100:18:   required from ‘class std::unordered_map<Rank, std::vector<std::basic_string<char> > >’
+./include/dealer.hpp:211:60:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp: In constructor ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Rank; _Tp = std::vector<std::basic_string<char> >; _Hash = std::hash<Rank>; _Pred = std::equal_to<Rank>; _Alloc = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >]’:
+./include/dealer.hpp:211:60: error: invalid use of incomplete type ‘std::unordered_map<Rank, std::vector<std::basic_string<char> > >::hasher {aka struct std::hash<Rank>}’
+         std::unordered_map<Rank, std::vector<std::string>> rank_to_player_map;
+                                                            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘std::unordered_map<Rank, std::vector<std::basic_string<char> > >::hasher {aka struct std::hash<Rank>}’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp:211:60: note:   when instantiating default argument for call to std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Rank; _Tp = std::vector<std::basic_string<char> >; _Hash = std::hash<Rank>; _Pred = std::equal_to<Rank>; _Alloc = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >]
+         std::unordered_map<Rank, std::vector<std::string>> rank_to_player_map;
+                                                            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘struct std::__detail::_Hash_code_base<Card_rank, std::pair<const Card_rank, std::vector<std::basic_string<char> > >, std::__detail::_Select1st, std::hash<Card_rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, true>’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1402:10:   required from ‘struct std::__detail::_Hashtable_base<Card_rank, std::pair<const Card_rank, std::vector<std::basic_string<char> > >, std::__detail::_Select1st, std::equal_to<Card_rank>, std::hash<Card_rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/hashtable.h:174:11:   required from ‘class std::_Hashtable<Card_rank, std::pair<const Card_rank, std::vector<std::basic_string<char> > >, std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >, std::__detail::_Select1st, std::equal_to<Card_rank>, std::hash<Card_rank>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<true, false, true> >’
+/usr/include/c++/4.8.2/bits/unordered_map.h:100:18:   required from ‘class std::unordered_map<Card_rank, std::vector<std::basic_string<char> > >’
+./include/dealer.hpp:238:69:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1070:12: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+     struct _Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2,
+            ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1082:53: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       using __ebo_h1 = _Hashtable_ebo_helper<1, _H1>;
+                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp: In constructor ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = std::vector<std::basic_string<char> >; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >]’:
+./include/dealer.hpp:238:69: error: invalid use of incomplete type ‘std::unordered_map<Card_rank, std::vector<std::basic_string<char> > >::hasher {aka struct std::hash<Card_rank>}’
+             std::unordered_map<Card_rank, std::vector<std::string>> high_card_vec_map; // maps high cards to vector of uuids
+                                                                     ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘std::unordered_map<Card_rank, std::vector<std::basic_string<char> > >::hasher {aka struct std::hash<Card_rank>}’
+     struct hash;
+            ^
+In file included from src/dealer_server.cpp:32:0:
+./include/dealer.hpp:238:69: note:   when instantiating default argument for call to std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = std::vector<std::basic_string<char> >; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >]
+             std::unordered_map<Card_rank, std::vector<std::string>> high_card_vec_map; // maps high cards to vector of uuids
+                                                                     ^
+./include/dealer.hpp: In member function ‘chat_message Game::event_handler(std::string)’:
+./include/dealer.hpp:572:29: error: ‘active_count’ was not declared in this scope
+                             active_count += player_lookup_umap.at(player_uuid).is_active;
+                             ^
+./include/dealer.hpp:575:52: error: ‘active_count’ was not declared in this scope
+                         if((!was_raise_in_round && active_count > 1) || active_count == 1)
+                                                    ^
+./include/dealer.hpp:569:30: warning: unused variable ‘all_max’ [-Wunused-variable]
+                         bool all_max = true;
+                              ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_M_hash_code(const _Key&) const [with _Key = Card_rank; _Value = std::pair<const Card_rank, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code = long unsigned int]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:539:49:   required from ‘std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type& std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::at(const key_type&) [with _Key = Card_rank; _Pair = std::pair<const Card_rank, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type = std::basic_string<char>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::key_type = Card_rank]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:613:27:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::at(const key_type&) [with _Key = Card_rank; _Tp = std::basic_string<char>; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type = std::basic_string<char>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_type = Card_rank]’
+./include/dealer.hpp:104:52:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1103:22: error: no match for call to ‘(const std::hash<Card_rank>) (const Card_rank&)’
+       { return _M_h1()(__k); }
+                      ^
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_M_hash_code(const _Key&) const [with _Key = Suit; _Value = std::pair<const Suit, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Suit>; _H2 = std::__detail::_Mod_range_hashing; std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code = long unsigned int]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:539:49:   required from ‘std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type& std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::at(const key_type&) [with _Key = Suit; _Pair = std::pair<const Suit, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Suit, std::basic_string<char> > >; _Equal = std::equal_to<Suit>; _H1 = std::hash<Suit>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type = std::basic_string<char>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::key_type = Suit]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:613:27:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::at(const key_type&) [with _Key = Suit; _Tp = std::basic_string<char>; _Hash = std::hash<Suit>; _Pred = std::equal_to<Suit>; _Alloc = std::allocator<std::pair<const Suit, std::basic_string<char> > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type = std::basic_string<char>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_type = Suit]’
+./include/dealer.hpp:104:76:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1103:22: error: no match for call to ‘(const std::hash<Suit>) (const Suit&)’
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_M_hash_code(const _Key&) const [with _Key = Card_rank; _Value = std::pair<const Card_rank, int>; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code = long unsigned int]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:487:49:   required from ‘std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type& std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::operator[](const key_type&) [with _Key = Card_rank; _Pair = std::pair<const Card_rank, int>; _Alloc = std::allocator<std::pair<const Card_rank, int> >; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type = int; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::key_type = Card_rank]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:596:20:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::operator[](const key_type&) [with _Key = Card_rank; _Tp = int; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, int> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type = int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_type = Card_rank]’
+./include/dealer.hpp:147:64:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1103:22: error: no match for call to ‘(const std::hash<Card_rank>) (const Card_rank&)’
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_M_hash_code(const _Key&) const [with _Key = Rank; _Value = std::pair<const Rank, std::function<bool(std::vector<Card>&)> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code = long unsigned int]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:513:49:   required from ‘std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type& std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::operator[](std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::key_type&&) [with _Key = Rank; _Pair = std::pair<const Rank, std::function<bool(std::vector<Card>&)> >; _Alloc = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >; _Equal = std::equal_to<Rank>; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type = std::function<bool(std::vector<Card>&)>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::key_type = Rank]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:600:20:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::operator[](std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_type&&) [with _Key = Rank; _Tp = std::function<bool(std::vector<Card>&)>; _Hash = std::hash<Rank>; _Pred = std::equal_to<Rank>; _Alloc = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type = std::function<bool(std::vector<Card>&)>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_type = Rank]’
+./include/dealer.hpp:201:53:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1103:22: error: no match for call to ‘(const std::hash<Rank>) (const Rank&)’
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_M_hash_code(const _Key&) const [with _Key = Rank; _Value = std::pair<const Rank, std::vector<std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code = long unsigned int]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:539:49:   required from ‘std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type& std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::at(const key_type&) [with _Key = Rank; _Pair = std::pair<const Rank, std::vector<std::basic_string<char> > >; _Alloc = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >; _Equal = std::equal_to<Rank>; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type = std::vector<std::basic_string<char> >; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::key_type = Rank]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:613:27:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::at(const key_type&) [with _Key = Rank; _Tp = std::vector<std::basic_string<char> >; _Hash = std::hash<Rank>; _Pred = std::equal_to<Rank>; _Alloc = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type = std::vector<std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_type = Rank]’
+./include/dealer.hpp:225:49:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1103:22: error: no match for call to ‘(const std::hash<Rank>) (const Rank&)’
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_M_hash_code(const _Key&) const [with _Key = Card_rank; _Value = std::pair<const Card_rank, std::vector<std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code = long unsigned int]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:539:49:   required from ‘std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type& std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::at(const key_type&) [with _Key = Card_rank; _Pair = std::pair<const Card_rank, std::vector<std::basic_string<char> > >; _Alloc = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type = std::vector<std::basic_string<char> >; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::key_type = Card_rank]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:613:27:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::at(const key_type&) [with _Key = Card_rank; _Tp = std::vector<std::basic_string<char> >; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type = std::vector<std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_type = Card_rank]’
+./include/dealer.hpp:245:82:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1103:22: error: no match for call to ‘(const std::hash<Card_rank>) (const Card_rank&)’
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_M_hash_code(const _Key&) const [with _Key = Game_phase; _Value = std::pair<const Game_phase, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Game_phase>; _H2 = std::__detail::_Mod_range_hashing; std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code = long unsigned int]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:539:49:   required from ‘std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type& std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::at(const key_type&) [with _Key = Game_phase; _Pair = std::pair<const Game_phase, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >; _Equal = std::equal_to<Game_phase>; _H1 = std::hash<Game_phase>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::mapped_type = std::basic_string<char>; std::__detail::_Map_base<_Key, _Pair, _Alloc, std::__detail::_Select1st, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits, true>::key_type = Game_phase]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:613:27:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type& std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::at(const key_type&) [with _Key = Game_phase; _Tp = std::basic_string<char>; _Hash = std::hash<Game_phase>; _Pred = std::equal_to<Game_phase>; _Alloc = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::mapped_type = std::basic_string<char>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_type = Game_phase]’
+./include/dealer.hpp:607:56:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1103:22: error: no match for call to ‘(const std::hash<Game_phase>) (const Game_phase&)’
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base(const _ExtractKey&, const _H1&, const _H2&, const std::__detail::_Default_ranged_hash&) [with _Key = Suit; _Value = std::pair<const Suit, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Suit>; _H2 = std::__detail::_Mod_range_hashing]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1463:65:   required from ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base(const _ExtractKey&, const _H1&, const _H2&, const _Hash&, const _Equal&) [with _Key = Suit; _Value = std::pair<const Suit, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Suit>; _H1 = std::hash<Suit>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+/usr/include/c++/4.8.2/bits/hashtable.h:852:19:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(_InputIterator, _InputIterator, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const _H2&, const _Hash&, const _Equal&, const _ExtractKey&, const allocator_type&) [with _InputIterator = const std::pair<const Suit, std::basic_string<char> >*; _Key = Suit; _Value = std::pair<const Suit, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Suit, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Suit>; _H1 = std::hash<Suit>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Suit, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:419:26:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::initializer_list<_Value>, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const key_equal&, const allocator_type&) [with _Key = Suit; _Value = std::pair<const Suit, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Suit, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Suit>; _H1 = std::hash<Suit>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_equal = std::equal_to<Suit>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Suit, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:189:35:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Suit; _Tp = std::basic_string<char>; _Hash = std::hash<Suit>; _Pred = std::equal_to<Suit>; _Alloc = std::allocator<std::pair<const Suit, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Suit, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Suit>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Suit>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Suit, std::basic_string<char> > >]’
+./include/dealer.hpp:664:5:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Suit>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Suit>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Suit>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Suit>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base(const _ExtractKey&, const _H1&, const _H2&, const std::__detail::_Default_ranged_hash&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1463:65:   required from ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base(const _ExtractKey&, const _H1&, const _H2&, const _Hash&, const _Equal&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+/usr/include/c++/4.8.2/bits/hashtable.h:852:19:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(_InputIterator, _InputIterator, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const _H2&, const _Hash&, const _Equal&, const _ExtractKey&, const allocator_type&) [with _InputIterator = const std::pair<const Card_rank, std::basic_string<char> >*; _Key = Card_rank; _Value = std::pair<const Card_rank, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:419:26:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::initializer_list<_Value>, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_equal = std::equal_to<Card_rank>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:189:35:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = std::basic_string<char>; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Card_rank, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, std::basic_string<char> > >]’
+./include/dealer.hpp:669:5:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base(const _ExtractKey&, const _H1&, const _H2&, const std::__detail::_Default_ranged_hash&) [with _Key = Bet_options; _Value = std::pair<const Bet_options, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Bet_options>; _H2 = std::__detail::_Mod_range_hashing]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1463:65:   required from ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base(const _ExtractKey&, const _H1&, const _H2&, const _Hash&, const _Equal&) [with _Key = Bet_options; _Value = std::pair<const Bet_options, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Bet_options>; _H1 = std::hash<Bet_options>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+/usr/include/c++/4.8.2/bits/hashtable.h:852:19:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(_InputIterator, _InputIterator, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const _H2&, const _Hash&, const _Equal&, const _ExtractKey&, const allocator_type&) [with _InputIterator = const std::pair<const Bet_options, std::basic_string<char> >*; _Key = Bet_options; _Value = std::pair<const Bet_options, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Bet_options>; _H1 = std::hash<Bet_options>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:419:26:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::initializer_list<_Value>, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const key_equal&, const allocator_type&) [with _Key = Bet_options; _Value = std::pair<const Bet_options, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Bet_options>; _H1 = std::hash<Bet_options>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_equal = std::equal_to<Bet_options>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:189:35:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Bet_options; _Tp = std::basic_string<char>; _Hash = std::hash<Bet_options>; _Pred = std::equal_to<Bet_options>; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Bet_options, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Bet_options>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Bet_options>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >]’
+./include/dealer.hpp:682:5:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Bet_options>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Bet_options>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Bet_options>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Bet_options>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base(const _ExtractKey&, const _H1&, const _H2&, const std::__detail::_Default_ranged_hash&) [with _Key = Game_phase; _Value = std::pair<const Game_phase, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Game_phase>; _H2 = std::__detail::_Mod_range_hashing]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1463:65:   required from ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base(const _ExtractKey&, const _H1&, const _H2&, const _Hash&, const _Equal&) [with _Key = Game_phase; _Value = std::pair<const Game_phase, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Game_phase>; _H1 = std::hash<Game_phase>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+/usr/include/c++/4.8.2/bits/hashtable.h:852:19:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(_InputIterator, _InputIterator, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const _H2&, const _Hash&, const _Equal&, const _ExtractKey&, const allocator_type&) [with _InputIterator = const std::pair<const Game_phase, std::basic_string<char> >*; _Key = Game_phase; _Value = std::pair<const Game_phase, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Game_phase>; _H1 = std::hash<Game_phase>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:419:26:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::initializer_list<_Value>, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const key_equal&, const allocator_type&) [with _Key = Game_phase; _Value = std::pair<const Game_phase, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Game_phase>; _H1 = std::hash<Game_phase>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_equal = std::equal_to<Game_phase>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:189:35:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Game_phase; _Tp = std::basic_string<char>; _Hash = std::hash<Game_phase>; _Pred = std::equal_to<Game_phase>; _Alloc = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Game_phase, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Game_phase>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Game_phase>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Game_phase, std::basic_string<char> > >]’
+./include/dealer.hpp:691:5:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Game_phase>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Game_phase>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Game_phase>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Game_phase>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base(const _ExtractKey&, const _H1&, const _H2&, const std::__detail::_Default_ranged_hash&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, int>; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1463:65:   required from ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base(const _ExtractKey&, const _H1&, const _H2&, const _Hash&, const _Equal&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, int>; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+/usr/include/c++/4.8.2/bits/hashtable.h:828:24:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const _H2&, const _Hash&, const _Equal&, const _ExtractKey&, const allocator_type&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, int>; _Alloc = std::allocator<std::pair<const Card_rank, int> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Card_rank, int> >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:397:26:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, int>; _Alloc = std::allocator<std::pair<const Card_rank, int> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_equal = std::equal_to<Card_rank>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Card_rank, int> >]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:142:35:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = int; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, int> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, int> >]’
+./include/dealer.hpp:146:56:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base(const _ExtractKey&, const _H1&, const _H2&, const std::__detail::_Default_ranged_hash&) [with _Key = Rank; _Value = std::pair<const Rank, std::function<bool(std::vector<Card>&)> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1463:65:   required from ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base(const _ExtractKey&, const _H1&, const _H2&, const _Hash&, const _Equal&) [with _Key = Rank; _Value = std::pair<const Rank, std::function<bool(std::vector<Card>&)> >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Rank>; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+/usr/include/c++/4.8.2/bits/hashtable.h:852:19:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(_InputIterator, _InputIterator, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const _H2&, const _Hash&, const _Equal&, const _ExtractKey&, const allocator_type&) [with _InputIterator = const std::pair<const Rank, std::function<bool(std::vector<Card>&)> >*; _Key = Rank; _Value = std::pair<const Rank, std::function<bool(std::vector<Card>&)> >; _Alloc = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Rank>; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:419:26:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::initializer_list<_Value>, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const key_equal&, const allocator_type&) [with _Key = Rank; _Value = std::pair<const Rank, std::function<bool(std::vector<Card>&)> >; _Alloc = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Rank>; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_equal = std::equal_to<Rank>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:189:35:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Rank; _Tp = std::function<bool(std::vector<Card>&)>; _Hash = std::hash<Rank>; _Pred = std::equal_to<Rank>; _Alloc = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Rank, std::function<bool(std::vector<Card>&)> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Rank, std::function<bool(std::vector<Card>&)> > >]’
+./include/dealer.hpp:197:9:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base(const _ExtractKey&, const _H1&, const _H2&, const std::__detail::_Default_ranged_hash&) [with _Key = Rank; _Value = std::pair<const Rank, std::vector<std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1463:65:   required from ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base(const _ExtractKey&, const _H1&, const _H2&, const _Hash&, const _Equal&) [with _Key = Rank; _Value = std::pair<const Rank, std::vector<std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Rank>; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+/usr/include/c++/4.8.2/bits/hashtable.h:828:24:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const _H2&, const _Hash&, const _Equal&, const _ExtractKey&, const allocator_type&) [with _Key = Rank; _Value = std::pair<const Rank, std::vector<std::basic_string<char> > >; _Alloc = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Rank>; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:397:26:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const key_equal&, const allocator_type&) [with _Key = Rank; _Value = std::pair<const Rank, std::vector<std::basic_string<char> > >; _Alloc = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Rank>; _H1 = std::hash<Rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_equal = std::equal_to<Rank>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:142:35:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Rank; _Tp = std::vector<std::basic_string<char> >; _Hash = std::hash<Rank>; _Pred = std::equal_to<Rank>; _Alloc = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Rank, std::vector<std::basic_string<char> > > >]’
+./include/dealer.hpp:211:60:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_Hash_code_base(const _ExtractKey&, const _H1&, const _H2&, const std::__detail::_Default_ranged_hash&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, std::vector<std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing]’:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1463:65:   required from ‘std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::_Hashtable_base(const _ExtractKey&, const _H1&, const _H2&, const _Hash&, const _Equal&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, std::vector<std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _Traits = std::__detail::_Hashtable_traits<true, false, true>]’
+/usr/include/c++/4.8.2/bits/hashtable.h:828:24:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const _H2&, const _Hash&, const _Equal&, const _ExtractKey&, const allocator_type&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, std::vector<std::basic_string<char> > >; _Alloc = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:397:26:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Value = std::pair<const Card_rank, std::vector<std::basic_string<char> > >; _Alloc = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Card_rank>; _H1 = std::hash<Card_rank>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_equal = std::equal_to<Card_rank>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:142:35:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Card_rank; _Tp = std::vector<std::basic_string<char> >; _Hash = std::hash<Card_rank>; _Pred = std::equal_to<Card_rank>; _Alloc = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Card_rank>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Card_rank, std::vector<std::basic_string<char> > > >]’
+./include/dealer.hpp:238:69:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1099:63: error: invalid use of incomplete type ‘struct std::hash<Card_rank>’
+       : __ebo_extract_key(__ex), __ebo_h1(__h1), __ebo_h2(__h2) { }
+                                                               ^
+In file included from /usr/include/c++/4.8.2/bits/basic_string.h:3033:0,
+                 from /usr/include/c++/4.8.2/string:52,
+                 from /usr/include/c++/4.8.2/bits/locale_classes.h:40,
+                 from /usr/include/c++/4.8.2/bits/ios_base.h:41,
+                 from /usr/include/c++/4.8.2/ios:42,
+                 from /usr/include/c++/4.8.2/ostream:38,
+                 from /usr/include/c++/4.8.2/iostream:39,
+                 from src/dealer_server.cpp:1:
+/usr/include/c++/4.8.2/bits/functional_hash.h:58:12: error: declaration of ‘struct std::hash<Card_rank>’
+     struct hash;
+            ^
+In file included from /usr/include/c++/4.8.2/bits/hashtable.h:35:0,
+                 from /usr/include/c++/4.8.2/unordered_set:47,
+                 from src/dealer_server.cpp:22:
+/usr/include/c++/4.8.2/bits/hashtable_policy.h: In instantiation of ‘std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::_M_hash_code(const _Key&) const [with _Key = Bet_options; _Value = std::pair<const Bet_options, std::basic_string<char> >; _ExtractKey = std::__detail::_Select1st; _H1 = std::hash<Bet_options>; _H2 = std::__detail::_Mod_range_hashing; std::__detail::_Hash_code_base<_Key, _Value, _ExtractKey, _H1, _H2, std::__detail::_Default_ranged_hash, true>::__hash_code = long unsigned int]’:
+/usr/include/c++/4.8.2/bits/hashtable.h:1418:45:   required from ‘std::pair<typename std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::iterator, bool> std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_M_insert(_Arg&&, std::true_type) [with _Arg = const std::pair<const Bet_options, std::basic_string<char> >&; _Key = Bet_options; _Value = std::pair<const Bet_options, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Bet_options>; _H1 = std::hash<Bet_options>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; typename std::__detail::_Hashtable_base<_Key, _Value, _ExtractKey, _Equal, _H1, _H2, _Hash, _Traits>::iterator = std::__detail::_Node_iterator<std::pair<const Bet_options, std::basic_string<char> >, false, true>; std::true_type = std::integral_constant<bool, true>]’
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:604:43:   required from ‘std::__detail::_Insert_base<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::__ireturn_type std::__detail::_Insert_base<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::insert(const value_type&) [with _Key = Bet_options; _Value = std::pair<const Bet_options, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Bet_options>; _H1 = std::hash<Bet_options>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::__detail::_Insert_base<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::__ireturn_type = std::pair<std::__detail::_Node_iterator<std::pair<const Bet_options, std::basic_string<char> >, false, true>, bool>; std::__detail::_Insert_base<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::value_type = std::pair<const Bet_options, std::basic_string<char> >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:864:8:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(_InputIterator, _InputIterator, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const _H2&, const _Hash&, const _Equal&, const _ExtractKey&, const allocator_type&) [with _InputIterator = const std::pair<const Bet_options, std::basic_string<char> >*; _Key = Bet_options; _Value = std::pair<const Bet_options, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Bet_options>; _H1 = std::hash<Bet_options>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/hashtable.h:419:26:   required from ‘std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::_Hashtable(std::initializer_list<_Value>, std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type, const _H1&, const key_equal&, const allocator_type&) [with _Key = Bet_options; _Value = std::pair<const Bet_options, std::basic_string<char> >; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; _ExtractKey = std::__detail::_Select1st; _Equal = std::equal_to<Bet_options>; _H1 = std::hash<Bet_options>; _H2 = std::__detail::_Mod_range_hashing; _Hash = std::__detail::_Default_ranged_hash; _RehashPolicy = std::__detail::_Prime_rehash_policy; _Traits = std::__detail::_Hashtable_traits<true, false, true>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::size_type = long unsigned int; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::key_equal = std::equal_to<Bet_options>; std::_Hashtable<_Key, _Value, _Alloc, _ExtractKey, _Equal, _H1, _H2, _Hash, _RehashPolicy, _Traits>::allocator_type = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >]’
+/usr/include/c++/4.8.2/bits/unordered_map.h:189:35:   required from ‘std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::unordered_map(std::initializer_list<typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type>, std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type, const hasher&, const key_equal&, const allocator_type&) [with _Key = Bet_options; _Tp = std::basic_string<char>; _Hash = std::hash<Bet_options>; _Pred = std::equal_to<Bet_options>; _Alloc = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >; typename std::_Hashtable<_Key, std::pair<const Key, T>, _Alloc, std::__detail::_Select1st, _Pred, _Hash, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<std::__not_<std::__and_<std::__is_fast_hash<_Hash>, std::is_default_constructible<_Hash>, std::is_copy_assignable<_Hash>, std::__detail::__is_noexcept_hash<_Key, _Hash> > >::value, false, true> >::value_type = std::pair<const Bet_options, std::basic_string<char> >; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::size_type = long unsigned int; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::hasher = std::hash<Bet_options>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::key_equal = std::equal_to<Bet_options>; std::unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>::allocator_type = std::allocator<std::pair<const Bet_options, std::basic_string<char> > >]’
+./include/dealer.hpp:682:5:   required from here
+/usr/include/c++/4.8.2/bits/hashtable_policy.h:1103:22: error: no match for call to ‘(const std::hash<Bet_options>) (const Bet_options&)’
+       { return _M_h1()(__k); }
+                      ^
+make: *** [src/dealer_server] Error 1
