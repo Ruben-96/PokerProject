@@ -18,7 +18,7 @@
 #include "json.hpp"
 
 using json = nlohmann::json;
-
+/*
 namespace std{
    template<typename E>
    struct hash{
@@ -31,7 +31,7 @@ namespace std{
       }
    };
 }
-
+*/
 //----------------------------------------------------------------------
 
 enum Suit { SPADES, DIAMONDS, HEARTS, CLUBS, SUIT_MAX };
@@ -136,7 +136,7 @@ public:
 
     enum Rank score_hand(std::vector<Card>& hand) // returns rank of hand
     {
-        std::unordered_map< Rank, std::function< bool(std::vector<Card>&) > > hand_score_table
+        std::unordered_map< Rank, std::function< bool(std::vector<Card>&) >, std::hash<int> > hand_score_table
         {
             {ROYAL_FLUSH, [](std::vector<Card>& hand)->bool // royal flush
                 {
@@ -156,7 +156,7 @@ public:
             },
             {FOUR_KIND, [](std::vector<Card>& hand)->bool // four of a kind
                 {
-                    std::unordered_map<Card_rank, int> card_count;
+                    std::unordered_map<Card_rank, int, std::hash<int> > card_count;
                     for(auto card: hand) { card_count[card.rank]++; }; // counts the number of cards in each rank in the hand
                     for(auto& kv: card_count) { if(kv.second == 4) return true; }; // if one rank has four cards found, return true
                     return false;
@@ -186,7 +186,7 @@ public:
             },
             {THREE_KIND, [](std::vector<Card>& hand)->bool // three of a kind
                 {
-                    std::unordered_map<Card_rank, int> card_count;
+                    std::unordered_map<Card_rank, int, std::hash<int> > card_count;
                     for(auto card: hand) { card_count[card.rank]++; }; // counts the card of each rank
                     for(auto& kv: card_count) { if(kv.second == 3) return true; }; // returns true if found any rank found 3 times
                     return false;
@@ -224,7 +224,7 @@ public:
 
     std::vector<std::string> determine_winner(std::vector<std::string> player_uuids)
     {
-        std::unordered_map<Rank, std::vector<std::string>> rank_to_player_map;
+        std::unordered_map< Rank, std::vector<std::string>, std::hash<int> > rank_to_player_map;
         for(int i = 0; i < HAND_RANK_MAX; i++)
         {
             rank_to_player_map.insert({static_cast<Rank>(i), {}});
@@ -254,7 +254,7 @@ public:
 
         if(rank_to_player_map.at(high_hand).size() > 1) // if there is more than one player with the highest rank, attempt to tie break
         {
-            std::unordered_map<Card_rank, std::vector<std::string>> high_card_vec_map; // maps high cards to vector of uuids
+            std::unordered_map<Card_rank, std::vector<std::string>, std::hash<int> > high_card_vec_map; // maps high cards to vector of uuids
             
             for(int i = 0; i < CARD_RANK_MAX; i++)
             {
@@ -701,11 +701,11 @@ public:
     int ante = 100;
     int was_raise_in_round = false;
     // maps to get string representations from enums and vice versa
-    std::unordered_map<Suit, std::string> suit_to_str
+    std::unordered_map< Suit, std::string, std::hash<int> > suit_to_str
     {
         {SPADES, "spades"}, {DIAMONDS, "diamonds"}, {HEARTS, "hearts"}, {CLUBS, "clubs"},
     };
-    std::unordered_map<Card_rank, std::string> card_rank_to_str
+    std::unordered_map< Card_rank, std::string, std::hash<int> > card_rank_to_str
     {
         {TWO, "2"}, {THREE, "3"}, {FOUR, "4"}, {FIVE, "5"}, {SIX, "6"}, {SEVEN, "7"}, 
         {EIGHT, "8"}, {NINE, "9"}, {TEN, "10"}, {JACK, "jack"}, {QUEEN, "queen"}, {KING, "king"}, {ACE, "ace"},
@@ -719,7 +719,7 @@ public:
         {"2", TWO}, {"3", THREE}, {"4", FOUR}, {"5", FIVE}, {"6", SIX}, {"7", SEVEN}, 
         {"8", EIGHT}, {"9", NINE}, {"10", TEN}, {"jack", JACK}, {"queen", QUEEN}, {"king", KING}, {"ace", ACE},
     };
-    std::unordered_map<Bet_options, std::string> bet_option_to_str
+    std::unordered_map< Bet_options, std::string, std::hash<int> > bet_option_to_str
     {
         {CHECK, "check"}, {CALL, "call"}, {RAISE, "raise"}, {FOLD, "fold"},
     };
@@ -727,7 +727,7 @@ public:
     {
         {"check", CHECK}, {"call", CALL}, {"raise", RAISE}, {"fold", FOLD},
     };
-    std::unordered_map<Game_phase, std::string> phase_to_str
+    std::unordered_map< Game_phase, std::string, std::hash<int> > phase_to_str
     {
         {PRE, "pre"}, {ANTE_DEAL, "ante & deal"}, {BET_ONE, "bet phase #1"}, {DRAW, "draw phase"}, 
         {BET_TWO, "bet phase #2"}, {SHOWDOWN, "showdown"},
