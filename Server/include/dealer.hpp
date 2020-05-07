@@ -435,6 +435,13 @@ public:
         json to_players;
         // according to the game phase, modify the game state, and record the new game state in a json object
         const Game_phase phase_now = phase;
+        if(phase > PRE)
+        {
+            if(*turn_iter != to_dealer["from"]["uuid"])
+            {
+                phase_now = 0;
+            }
+        }
         switch(phase_now)
         {
 
@@ -465,10 +472,13 @@ public:
                     if(to_dealer.find("event") != to_dealer.end())
                     {
                         std::string player_event = to_dealer["event"].get<std::string>();
-                        if(player_event == "join") player_lookup_umap.at(uuid_str).is_active = true; // join = ready flag
-                        std::stringstream comment;
-                        comment << "Player " << name << " has readied up.";
-                        to_players["dealer_comment"] = comment.str();
+                        if(player_event == "join")
+                        {
+                            player_lookup_umap.at(uuid_str).is_active = true; // join = ready flag
+                            std::stringstream comment;
+                            comment << "Player " << name << " has readied up.";
+                            to_players["dealer_comment"] = comment.str();
+                        }
                     }
                     if(player_uuids.size() >= PLAYER_COUNT_MIN && player_uuids.size() <= PLAYER_COUNT_MAX)
                     {
