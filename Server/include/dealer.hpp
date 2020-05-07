@@ -10,28 +10,11 @@
 #include <sstream>
 #include <cassert>
 #include <sstream>
-#include <boost/uuid/uuid.hpp>
-#include <boost/uuid/uuid_generators.hpp>
-#include <boost/uuid/uuid_io.hpp>
-#include <boost/lexical_cast.hpp>
 
 #include "json.hpp"
 
 using json = nlohmann::json;
-/*
-namespace std{
-   template<typename E>
-   struct hash{
-      typedef E argument_type;
-      typedef size_t result_type;
-      using sfinae = typename std::enable_if<std::is_enum<E>::value>::type;
-      result_type operator() (const E& e) const{
-         using base_t = typename std::underlying_type<E>::type;
-         return std::hash<base_t>()(static_cast<base_t>(e));
-      }
-   };
-}
-*/
+
 //----------------------------------------------------------------------
 
 enum Suit { SPADES, DIAMONDS, HEARTS, CLUBS, SUIT_MAX };
@@ -483,6 +466,9 @@ public:
                     {
                         std::string player_event = to_dealer["event"].get<std::string>();
                         if(player_event == "join") player_lookup_umap.at(uuid_str).is_active = true; // join = ready flag
+                        std::stringstream comment;
+                        comment << "Player " << name << " has readied up.";
+                        to_players["dealer_comment"] = comment.str();
                     }
                     if(player_uuids.size() >= PLAYER_COUNT_MIN && player_uuids.size() <= PLAYER_COUNT_MAX)
                     {
@@ -494,6 +480,9 @@ public:
                         if(all_ready) 
                         {
                             turn_iter = player_uuids.begin();
+                            std::string comment_b = "\nThe game has begun.";
+                            std::string comment_a = to_players["dealer_comment"].get<std::string>() + comment_b;
+                            to_players["dealer_comment"] = comment_a;
                             phase = ANTE_DEAL;
                         }
                     }

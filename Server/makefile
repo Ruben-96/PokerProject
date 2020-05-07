@@ -12,6 +12,8 @@ test:
 	./src/test_hand
 	./src/test_score
 	./src/test_win
+run:
+	./src/dealer_server 9000
 clean:
 	-rm -rf asio-1.12.2
 	-rm -f src/dealer_server
