@@ -183,7 +183,7 @@ void UI::spectate_game(void *ui){
         tempUI->uuid = boost::uuids::to_string(boost::uuids::random_generator()());
         tempUI->toServer["from"]["name"] = tempUI->name;
         tempUI->toServer["from"]["uuid"] = tempUI->uuid;
-        tempUI->update_game_screen();
+        tempUI->update_game_screen(tempUI->toServer);
         tempUI->stack->set_visible_child("spectate_screen");
     } catch(std::exception &e){
         tempUI->lbl_connection_error->set_visible(true);
