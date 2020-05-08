@@ -555,7 +555,6 @@ public:
                 if (phase!= SHOWDOWN)
                 {
                     Player* player = &player_lookup_umap.at(*turn_iter);
-
                     // parse cards requested
                     json discard_array = to_dealer["cards_requested"];
                     std::vector<Card> discard_pile;
