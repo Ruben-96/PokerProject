@@ -422,7 +422,6 @@ public:
                 }
                 break;
             default:
-                assert(false);
                 break;
         }
         return;
@@ -434,12 +433,12 @@ public:
         json to_dealer = json::parse(input_string);
         json to_players;
         // according to the game phase, modify the game state, and record the new game state in a json object
-        const Game_phase phase_now = phase;
-        if(phase > PRE)
+        Game_phase phase_now = phase;
+        if(phase == BET_ONE || phase == DRAW || phase == BET_TWO)
         {
             if(*turn_iter != to_dealer["from"]["uuid"])
             {
-                phase_now = PRE;
+                phase_now = PHASE_MAX;
             }
         }
         switch(phase_now)
@@ -555,8 +554,6 @@ public:
             case DRAW: // players send a list of cards to be replaced; those are removed from their hands and new cards are dealt; one round
                 if (phase!= SHOWDOWN)
                 {
-                    assert(to_dealer["event"].get<std::string>() == "request_cards");
-                    assert(to_dealer["from"]["uuid"].get<std::string>() == *turn_iter);
                     Player* player = &player_lookup_umap.at(*turn_iter);
 
                     // parse cards requested
@@ -595,7 +592,6 @@ public:
                 if(phase != SHOWDOWN)
                 {
                     std::string current_player_uuid = to_dealer["from"]["uuid"].get<std::string>();
-                    assert(current_player_uuid == *turn_iter);
                     
                     Player* player = &player_lookup_umap.at(current_player_uuid);
 
@@ -640,7 +636,6 @@ public:
                 break;
 
             default:
-                assert(false);
                 break;
         }
         if(phase != PRE)
