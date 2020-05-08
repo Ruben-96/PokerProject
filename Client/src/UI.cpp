@@ -112,11 +112,8 @@ void UI::ready_up(void *ui){
 }
 void UI::update_fromServer(chat_message msg){
     fromServer = msg.data();
-    std::string temp = fromServer.dump();
-    json updateGame = json::parse(temp);
-    json updateSpectate = json::parse(temp);
-    update_game_screen(updateGame);
-    update_spectate_screen(updateGame);
+    update_game_screen(fromServer);
+    update_spectate_screen(fromServer);
 }
 void UI::raise_(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
@@ -151,6 +148,7 @@ void UI::join_game(void *ui){
         tempUI->stack->set_visible_child("game_screen");
         tempUI->send_info();
         tempUI->inGame = true;
+        std::cout << "Connected to Server" << std::endl;
     } catch(std::exception &e){
         tempUI->lbl_connection_error->set_visible(true);
     }
@@ -163,8 +161,11 @@ void UI::connect(std::string ip, std::string port){
     this->thread = new std::thread([this](){io_context->run();});
     this->connection->gui = this;
 }
-void UI::update_game_screen(json fromServer){
-    
+void UI::update_game_screen(json j){
+    Gtk::Label label;
+    std::cout << "update_game_screen : " << j.value("dealer_comment", "No Comment") << std::endl;
+    label.set_label(j.value("dealer_comment", "No Comment"));
+    list_chat->append(label);
 }
 void UI::update_spectate_screen(json fromServer){
 

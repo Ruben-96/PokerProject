@@ -439,7 +439,7 @@ public:
         {
             if(*turn_iter != to_dealer["from"]["uuid"])
             {
-                phase_now = PRE;
+               // phase_now = PRE;
             }
         }
         switch(phase_now)
