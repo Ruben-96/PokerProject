@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 {
     Glib::RefPtr<Gtk::Application> app = Gtk::Application::create("PokerProject.Team11");
     UI gui;
-
+    app->set_flags(Gio::ApplicationFlags::APPLICATION_NON_UNIQUE);
     app->run(*gui.get_window());
 
     // char line[chat_message::max_body_length + 1];
