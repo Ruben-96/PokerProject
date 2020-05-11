@@ -49,7 +49,7 @@ void CONNECTION::do_read_header(){
 void CONNECTION::do_read_body(){
     asio::async_read(socket_, asio::buffer(read_msg_.body(), read_msg_.body_length()), [this](std::error_code ec, std::size_t /*length*/){
         if(!ec){
-            gui->update_fromServer(read_msg_);
+            gui->update_fromServer(read_msg_.body());
             // std::cout.write(read_msg_.body(), read_msg_.body_length());
             // std::cout << "\n";
             // do_read_header();

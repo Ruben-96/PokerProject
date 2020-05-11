@@ -73,7 +73,7 @@ class UI{
         Gtk::Window* get_window();
         void send_info();
         void send_move(std::string move);
-        void update_fromServer(chat_message msg);
+        void update_fromServer(std::string msg);
         static void raise_(void *ui);
         static void bet(void *ui);
         static void allin(void *ui);

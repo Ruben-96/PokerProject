@@ -14,6 +14,8 @@
 #include "chat_message.hpp"
 #include "asio.hpp"
 
+using json = nlohmann::json;
+
 UI::UI(){
     builder = Gtk::Builder::create_from_file("glade/MainWindow.glade");
     //Connection Variables
@@ -110,8 +112,9 @@ void UI::ready_up(void *ui){
     tempUI->btn_check->show();
     tempUI->btn_fold->show();
 }
-void UI::update_fromServer(chat_message msg){
-    fromServer = msg.data();
+void UI::update_fromServer(std::string msg_body){
+    std::cout << msg_body << std::endl;
+    json fromServer = json::parse(msg_body);
     update_game_screen(fromServer);
     update_spectate_screen(fromServer);
 }
@@ -163,8 +166,8 @@ void UI::connect(std::string ip, std::string port){
 }
 void UI::update_game_screen(json j){
     Gtk::Label label;
-    std::cout << "update_game_screen : " << j.value("dealer_comment", "No Comment") << std::endl;
-    label.set_label(j.value("dealer_comment", "No Comment"));
+    std::cout << "update_game_screen : " << j["dealer_comment"].get<std::string>() << std::endl;
+    label.set_label(j["dealer_comment"].get<std::string>());
     list_chat->append(label);
 }
 void UI::update_spectate_screen(json fromServer){
