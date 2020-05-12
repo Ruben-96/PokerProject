@@ -70,6 +70,11 @@ UI::UI(){
     playersNameGame.push_back(lbl_player_three);
     playersNameGame.push_back(lbl_player_four);
     playersNameGame.push_back(lbl_player_five);
+    playersCards.push_back(img_card_one);
+    playersCards.push_back(img_card_two);
+    playersCards.push_back(img_card_three);
+    playersCards.push_back(img_card_four);
+    playersCards.push_back(img_card_five);
     bx_player_one->hide();
     bx_player_two->hide();
     bx_player_three->hide();
@@ -99,14 +104,40 @@ UI::UI(){
     //Spectate Screen
     btn_leave_spectate->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
 }
+UI::~UI(){
+    for(unsigned int i = 0; i < playersCards.size(); i++){
+        playersCards.at(i)->clear();
+    }
+}
 Gtk::Window* UI::get_window(){
     return this->window;
 }
 //UI Functionality Methods
 void UI::ready_up(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
+    tempUI->btn_ready->set_sensitive(false);
     tempUI->send_move("join");
 }
+// void UI::select_card_one(void *ui){
+//     UI *tempUI = static_cast<UI *>(ui);
+    
+// }
+// void UI::select_card_two(void *ui){
+//     UI *tempUI = static_cast<UI *>(ui);
+    
+// }
+// void UI::select_card_three(void *ui){
+//     UI *tempUI = static_cast<UI *>(ui);
+    
+// }
+// void UI::select_card_four(void *ui){
+//     UI *tempUI = static_cast<UI *>(ui);
+    
+// }
+// void UI::select_card_five(void *ui){
+//     UI *tempUI = static_cast<UI *>(ui);
+    
+// }
 void UI::raise_(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
     tempUI->send_move("raise");
@@ -130,16 +161,14 @@ void UI::check(void *ui){
 void UI::fold(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
     tempUI->send_move("fold");
-    tempUI->inGame = false;
 }
 void UI::join_game(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
     try{
         tempUI->connect(tempUI->entry_ip->get_text(), tempUI->entry_port->get_text());
         tempUI->name = tempUI->entry_name->get_text().raw();
-        tempUI->stack->set_visible_child("game_screen");
         tempUI->send_info();
-        tempUI->inGame = true;
+        tempUI->stack->set_visible_child("game_screen");
         std::cout << "Connected to Server " << tempUI->entry_ip->get_text().raw() << " : " << tempUI->entry_port->get_text().raw() << std::endl;
     } catch(std::exception &e){
         tempUI->lbl_connection_error->set_visible(true);
@@ -150,8 +179,8 @@ void UI::spectate_game(void *ui){
     try{
         tempUI->connect(tempUI->entry_ip->get_text(), tempUI->entry_port->get_text());
         tempUI->name = tempUI->entry_name->get_text().raw();
-        tempUI->stack->set_visible_child("spectate_screen");
         tempUI->send_info();
+        tempUI->stack->set_visible_child("spectate_screen");
     } catch(std::exception &e){
         tempUI->lbl_connection_error->set_visible(true);
     }
@@ -211,6 +240,20 @@ void UI::update_fromServer(std::string message){
     for(auto& element : fromServer["hand"]){
         playersNameGame.at(i)->set_label(element.value("name", "No Name"));
         playersGame.at(i)->show();
+        if(element.value("uuid", "NULL") == uuid){
+            lbl_player_bank->set_label(std::to_string(element.value("final_bank", 0000)));
+            int j = 0;
+            for(auto& card : element["cards"]){
+                std::string url = "./img/cards_150/" + card.get<std::string>() + ".jpg";
+                playersCards.at(j)->set(url);
+                // if(fromServer.value("phase", "NULL") == "draw phase"){
+                //     playersCards.at(j)->set_sensitive(true);
+                // } else{
+                //     playersCards.at(j)->set_sensitive(false);
+                // }
+                j++;
+            }
+        }
         i++;
     }
     if(fromServer.value("turn", "NULL") == uuid){

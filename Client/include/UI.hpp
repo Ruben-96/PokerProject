@@ -31,7 +31,6 @@ class UI{
         asio::io_context *io_context;
         std::thread *thread;
         //Data Variables
-        bool inGame = false;
         std::string name;
         std::string uuid;
         json toServer;
@@ -46,6 +45,7 @@ class UI{
         Gtk::Label *lbl_connection_error;
         std::vector<Gtk::Box *> playersGame;
         std::vector<Gtk::Label *> playersNameGame;
+        std::vector<Gtk::Image *> playersCards;
         //Game Screen
         Gtk::Button *btn_leave_game;
         Gtk::Label *lbl_player_one;
@@ -77,6 +77,7 @@ class UI{
         //Game Variables
 
         UI();
+        ~UI();
         Gtk::Window* get_window();
         void send_info();
         void send_move(std::string move);
@@ -95,4 +96,9 @@ class UI{
         static void spectate_game(void *ui);
         static void leave_game(void *ui);
         static void ready_up(void *ui);
+        static void select_card_one(void *ui);
+        static void select_card_two(void *ui);
+        static void select_card_three(void *ui);
+        static void select_card_four(void *ui);
+        static void select_card_five(void *ui);
 };
