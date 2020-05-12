@@ -2,6 +2,7 @@
 #include <deque>
 #include <iostream>
 #include <thread>
+#include <vector>
 #include <gtkmm.h>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
@@ -64,6 +65,11 @@ UI::UI(){
     playersGame.push_back(bx_player_three);
     playersGame.push_back(bx_player_four);
     playersGame.push_back(bx_player_five);
+    playersNameGame.push_back(lbl_player_one);
+    playersNameGame.push_back(lbl_player_two);
+    playersNameGame.push_back(lbl_player_three);
+    playersNameGame.push_back(lbl_player_four);
+    playersNameGame.push_back(lbl_player_five);
     bx_player_one->hide();
     bx_player_two->hide();
     bx_player_three->hide();
@@ -76,12 +82,12 @@ UI::UI(){
     btn_join->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&join_game), this));
     btn_spectate->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&spectate_game), this));
     //Game Screen
-    btn_raise->hide();
-    btn_bet->hide();
-    btn_allin->hide();
-    btn_call->hide();
-    btn_check->hide();
-    btn_fold->hide();
+    btn_raise->set_sensitive(false);
+    btn_bet->set_sensitive(false);
+    btn_allin->set_sensitive(false);
+    btn_call->set_sensitive(false);
+    btn_check->set_sensitive(false);
+    btn_fold->set_sensitive(false);
     btn_leave_game->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
     btn_raise->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&raise_), this));
     btn_bet->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&bet), this));
@@ -96,16 +102,10 @@ UI::UI(){
 Gtk::Window* UI::get_window(){
     return this->window;
 }
-//UI Functionality methods
+//UI Functionality Methods
 void UI::ready_up(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
     tempUI->send_move("join");
-    tempUI->btn_raise->show();
-    tempUI->btn_bet->show();
-    tempUI->btn_allin->show();
-    tempUI->btn_call->show();
-    tempUI->btn_check->show();
-    tempUI->btn_fold->show();
 }
 void UI::raise_(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
@@ -172,28 +172,62 @@ void UI::leave_game(void *ui){
 void UI::send_info(){
     toServer["from"]["name"] = name;
     toServer["from"]["uuid"] = uuid;
+
     chat_message msg;
-    std::string temp = toServer.dump();
-    msg.body_length(std::strlen(temp.c_str()));
-    std::memcpy(msg.body(), temp.c_str(), msg.body_length());
+    std::string toServer_str = toServer.dump();
+    
+    char msg_body[chat_message::max_body_length];
+    strcpy(msg_body, toServer_str.c_str());
+    
+    msg.body_length(std::strlen(toServer_str.c_str()) + 1);
+    std::memcpy(msg.body(), msg_body, msg.body_length());
     msg.encode_header();
+    
     connection->write(msg);
+    
 }
 void UI::send_move(std::string move){
     toServer["from"]["name"] = name;
     toServer["from"]["uuid"] = uuid;
     toServer["event"] = move;
+
     chat_message msg;
-    std::string temp = toServer.dump();
-    msg.body_length(std::strlen(temp.c_str()));
-    std::memcpy(msg.body(), temp.c_str(), msg.body_length());
+    std::string toServer_str = toServer.dump();
+
+    char msg_body[chat_message::max_body_length + 1];
+    strcpy(msg_body, toServer_str.c_str());
+
+    msg.body_length(std::strlen(toServer_str.c_str()) + 1);
+    std::memcpy(msg.body(), msg_body, msg.body_length());
     msg.encode_header();
+    
     connection->write(msg);
 }
 void UI::update_fromServer(std::string message){
     std::cout << message << std::endl;
     message.erase(0, message.find("{"));
     json fromServer = json::parse(message);
+    int i = 0;
+    for(auto& element : fromServer["hand"]){
+        playersNameGame.at(i)->set_label(element.value("name", "No Name"));
+        playersGame.at(i)->show();
+        i++;
+    }
+    if(fromServer.value("turn", "NULL") == uuid){
+        btn_raise->set_sensitive(true);
+        btn_bet->set_sensitive(true);
+        btn_allin->set_sensitive(true);
+        btn_call->set_sensitive(true);
+        btn_check->set_sensitive(true);
+        btn_fold->set_sensitive(true);
+    } else{
+        btn_raise->set_sensitive(false);
+        btn_bet->set_sensitive(false);
+        btn_allin->set_sensitive(false);
+        btn_call->set_sensitive(false);
+        btn_check->set_sensitive(false);
+        btn_fold->set_sensitive(false);
+    }
     Gtk::Label label(fromServer.value("dealer_comment", "No Comment"));
     list_chat->append(label);
 

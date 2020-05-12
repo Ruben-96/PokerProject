@@ -236,6 +236,7 @@
                 <property name="orientation">vertical</property>
                 <child>
                   <object class="GtkBox" id="bx_player_one">
+                    <property name="name">bx_player_one</property>
                     <property name="height_request">130</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -276,6 +277,7 @@
                 </child>
                 <child>
                   <object class="GtkBox" id="bx_player_two">
+                    <property name="name">bx_player_two</property>
                     <property name="height_request">130</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -316,6 +318,7 @@
                 </child>
                 <child>
                   <object class="GtkBox" id="bx_player_three">
+                    <property name="name">bx_player_three</property>
                     <property name="height_request">130</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -356,6 +359,7 @@
                 </child>
                 <child>
                   <object class="GtkBox" id="bx_player_four">
+                    <property name="name">bx_player_four</property>
                     <property name="height_request">130</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -396,6 +400,7 @@
                 </child>
                 <child>
                   <object class="GtkBox" id="bx_player_five">
+                    <property name="name">bx_player_five</property>
                     <property name="height_request">130</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>

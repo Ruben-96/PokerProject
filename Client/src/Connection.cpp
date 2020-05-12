@@ -16,7 +16,6 @@ CONNECTION::CONNECTION(asio::io_context& io_context, const tcp::resolver::result
 
 void CONNECTION::write(const chat_message& msg){
     asio::post(io_context_, [this, msg](){
-        std::cout << "Sending : " << msg.data() << std::endl;
         bool write_in_progress = !write_msgs_.empty();
         write_msgs_.push_back(msg);
         if (!write_in_progress){
@@ -53,7 +52,7 @@ void CONNECTION::do_read_body(){
             gui->update_fromServer(read_msg_.body());
             // std::cout.write(read_msg_.body(), read_msg_.body_length());
             // std::cout << "\n";
-            // do_read_header();
+            do_read_header();
         } else{
             socket_.close();
         }

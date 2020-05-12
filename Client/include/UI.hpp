@@ -44,7 +44,8 @@ class UI{
         Gtk::Button *btn_join;
         Gtk::Button *btn_spectate;
         Gtk::Label *lbl_connection_error;
-        std::vector<Gtk::Widget *> playersGame;
+        std::vector<Gtk::Box *> playersGame;
+        std::vector<Gtk::Label *> playersNameGame;
         //Game Screen
         Gtk::Button *btn_leave_game;
         Gtk::Label *lbl_player_one;
