@@ -54,6 +54,21 @@ UI::UI(){
     builder->get_widget("lbl_player_bank", lbl_player_bank);
     builder->get_widget("list_chat", list_chat);
     builder->get_widget("btn_ready", btn_ready);
+    builder->get_widget("bx_player_one", bx_player_one);
+    builder->get_widget("bx_player_two", bx_player_two);
+    builder->get_widget("bx_player_three", bx_player_three);
+    builder->get_widget("bx_player_four", bx_player_four);
+    builder->get_widget("bx_player_five", bx_player_five);
+    playersGame.push_back(bx_player_one);
+    playersGame.push_back(bx_player_two);
+    playersGame.push_back(bx_player_three);
+    playersGame.push_back(bx_player_four);
+    playersGame.push_back(bx_player_five);
+    bx_player_one->hide();
+    bx_player_two->hide();
+    bx_player_three->hide();
+    bx_player_four->hide();
+    bx_player_five->hide();
     //Spectate Screen
     builder->get_widget("btn_leave_spectate", btn_leave_spectate);
 
@@ -81,27 +96,7 @@ UI::UI(){
 Gtk::Window* UI::get_window(){
     return this->window;
 }
-void UI::send_info(){
-    toServer["from"]["name"] = name;
-    toServer["from"]["uuid"] = uuid;
-    chat_message msg;
-    std::string temp = toServer.dump();
-    msg.body_length(std::strlen(temp.c_str()));
-    std::memcpy(msg.body(), temp.c_str(), msg.body_length());
-    msg.encode_header();
-    connection->write(msg);
-}
-void UI::send_move(std::string move){
-    toServer["from"]["name"] = name;
-    toServer["from"]["uuid"] = uuid;
-    toServer["event"] = move;
-    chat_message msg;
-    std::string temp = toServer.dump();
-    msg.body_length(std::strlen(temp.c_str()));
-    std::memcpy(msg.body(), temp.c_str(), msg.body_length());
-    msg.encode_header();
-    connection->write(msg);
-}
+//UI Functionality methods
 void UI::ready_up(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
     tempUI->send_move("join");
@@ -111,12 +106,6 @@ void UI::ready_up(void *ui){
     tempUI->btn_call->show();
     tempUI->btn_check->show();
     tempUI->btn_fold->show();
-}
-void UI::update_fromServer(std::string msg_body){
-    std::cout << msg_body << std::endl;
-    json fromServer = json::parse(msg_body);
-    update_game_screen(fromServer);
-    update_spectate_screen(fromServer);
 }
 void UI::raise_(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
@@ -151,10 +140,63 @@ void UI::join_game(void *ui){
         tempUI->stack->set_visible_child("game_screen");
         tempUI->send_info();
         tempUI->inGame = true;
-        std::cout << "Connected to Server" << std::endl;
+        std::cout << "Connected to Server " << tempUI->entry_ip->get_text().raw() << " : " << tempUI->entry_port->get_text().raw() << std::endl;
     } catch(std::exception &e){
         tempUI->lbl_connection_error->set_visible(true);
     }
+}
+void UI::spectate_game(void *ui){
+    UI *tempUI = static_cast<UI *>(ui);
+    try{
+        tempUI->connect(tempUI->entry_ip->get_text(), tempUI->entry_port->get_text());
+        tempUI->name = tempUI->entry_name->get_text().raw();
+        tempUI->stack->set_visible_child("spectate_screen");
+        tempUI->send_info();
+    } catch(std::exception &e){
+        tempUI->lbl_connection_error->set_visible(true);
+    }
+}
+void UI::update_login_screen(){
+    entry_name->set_text("");
+    entry_ip->set_text("");
+    entry_port->set_text("");
+}
+void UI::leave_game(void *ui){
+    UI *tempUI = static_cast<UI *>(ui);
+    tempUI->connection->close();
+    tempUI->thread->join();
+    tempUI->update_login_screen();
+    tempUI->stack->set_visible_child("login_screen");
+}
+//Connection methods
+void UI::send_info(){
+    toServer["from"]["name"] = name;
+    toServer["from"]["uuid"] = uuid;
+    chat_message msg;
+    std::string temp = toServer.dump();
+    msg.body_length(std::strlen(temp.c_str()));
+    std::memcpy(msg.body(), temp.c_str(), msg.body_length());
+    msg.encode_header();
+    connection->write(msg);
+}
+void UI::send_move(std::string move){
+    toServer["from"]["name"] = name;
+    toServer["from"]["uuid"] = uuid;
+    toServer["event"] = move;
+    chat_message msg;
+    std::string temp = toServer.dump();
+    msg.body_length(std::strlen(temp.c_str()));
+    std::memcpy(msg.body(), temp.c_str(), msg.body_length());
+    msg.encode_header();
+    connection->write(msg);
+}
+void UI::update_fromServer(std::string message){
+    std::cout << message << std::endl;
+    message.erase(0, message.find("{"));
+    json fromServer = json::parse(message);
+    Gtk::Label label(fromServer.value("dealer_comment", "No Comment"));
+    list_chat->append(label);
+
 }
 void UI::connect(std::string ip, std::string port){
     io_context = new asio::io_context();
@@ -163,40 +205,4 @@ void UI::connect(std::string ip, std::string port){
     this->connection = new CONNECTION(*io_context, endpoints);
     this->thread = new std::thread([this](){io_context->run();});
     this->connection->gui = this;
-}
-void UI::update_game_screen(json j){
-    Gtk::Label label;
-    std::cout << "update_game_screen : " << j["dealer_comment"].get<std::string>() << std::endl;
-    label.set_label(j["dealer_comment"].get<std::string>());
-    list_chat->append(label);
-}
-void UI::update_spectate_screen(json fromServer){
-
-}
-void UI::update_login_screen(){
-    entry_name->set_text("");
-    entry_ip->set_text("");
-    entry_port->set_text("");
-    lbl_connection_error->set_visible(false);
-}
-void UI::spectate_game(void *ui){
-    UI *tempUI = static_cast<UI *>(ui);
-    try{
-        tempUI->connect(tempUI->entry_ip->get_text(), tempUI->entry_port->get_text());
-        tempUI->name = tempUI->entry_name->get_text().raw();
-        tempUI->uuid = boost::uuids::to_string(boost::uuids::random_generator()());
-        tempUI->toServer["from"]["name"] = tempUI->name;
-        tempUI->toServer["from"]["uuid"] = tempUI->uuid;
-        tempUI->update_game_screen(tempUI->toServer);
-        tempUI->stack->set_visible_child("spectate_screen");
-    } catch(std::exception &e){
-        tempUI->lbl_connection_error->set_visible(true);
-    }
-}
-void UI::leave_game(void *ui){
-    UI *tempUI = static_cast<UI *>(ui);
-    tempUI->connection->close();
-    tempUI->thread->join();
-    tempUI->update_login_screen();
-    tempUI->stack->set_visible_child("login_screen");
 }

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <thread>
 #include <gtkmm.h>
+#include <vector>
 #include "Connection.hpp"
 #include "json.hpp"
 #include "asio.hpp"
@@ -33,7 +34,6 @@ class UI{
         bool inGame = false;
         std::string name;
         std::string uuid;
-        json fromServer;
         json toServer;
         //Login Screen
         Gtk::Window *window;
@@ -44,6 +44,7 @@ class UI{
         Gtk::Button *btn_join;
         Gtk::Button *btn_spectate;
         Gtk::Label *lbl_connection_error;
+        std::vector<Gtk::Widget *> playersGame;
         //Game Screen
         Gtk::Button *btn_leave_game;
         Gtk::Label *lbl_player_one;
@@ -65,6 +66,11 @@ class UI{
         Gtk::Label *lbl_player_bank;
         Gtk::ListBox *list_chat;
         Gtk::Button *btn_ready;
+        Gtk::Box *bx_player_one;
+        Gtk::Box *bx_player_two;
+        Gtk::Box *bx_player_three;
+        Gtk::Box *bx_player_four;
+        Gtk::Box *bx_player_five;
         //Spectate Screen
         Gtk::Button *btn_leave_spectate;
         //Game Variables

@@ -16,6 +16,7 @@ CONNECTION::CONNECTION(asio::io_context& io_context, const tcp::resolver::result
 
 void CONNECTION::write(const chat_message& msg){
     asio::post(io_context_, [this, msg](){
+        std::cout << "Sending : " << msg.data() << std::endl;
         bool write_in_progress = !write_msgs_.empty();
         write_msgs_.push_back(msg);
         if (!write_in_progress){

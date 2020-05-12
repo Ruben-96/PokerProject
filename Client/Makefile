@@ -8,16 +8,16 @@ all: asio-1.12.2  chat_client
 asio-1.12.2:
 	tar xzf asio-1.12.2.tar.gz
 
-chat_client: chat_client.o Connection.o UI.o
+chat_client: ./bin/chat_client.o ./bin/Connection.o ./bin/UI.o
 	$(CXXFLAGS) ./bin/chat_client.o ./bin/Connection.o ./bin/UI.o -o ./bin/chat_client $(LIBS)
 
-chat_client.o: ./src/chat_client.cpp
+./bin/chat_client.o: ./src/chat_client.cpp
 	$(CXXFLAGS) -c ./src/chat_client.cpp -o ./bin/chat_client.o
 
-Connection.o: ./src/Connection.cpp
+./bin/Connection.o: ./src/Connection.cpp
 	$(CXXFLAGS) -c ./src/Connection.cpp -o ./bin/Connection.o
 
-UI.o: ./src/UI.cpp
+./bin/UI.o: ./src/UI.cpp
 	$(CXXFLAGS) -c ./src/UI.cpp -o ./bin/UI.o
 
 clean:
