@@ -17,6 +17,7 @@ CONNECTION::CONNECTION(asio::io_context& io_context, const tcp::resolver::result
 void CONNECTION::write(const chat_message& msg){
     asio::post(io_context_, [this, msg](){
         bool write_in_progress = !write_msgs_.empty();
+        std::cout << "WRITING: " << msg.body() << std::endl;
         write_msgs_.push_back(msg);
         if (!write_in_progress){
             do_write();
@@ -41,6 +42,7 @@ void CONNECTION::do_read_header(){
         if(!ec && read_msg_.decode_header()){
             do_read_body();
         } else{
+            std::cout << "SOCKET CLOSE do_read_header" << std::endl;
             socket_.close();
         }
     });
@@ -54,6 +56,7 @@ void CONNECTION::do_read_body(){
             // std::cout << "\n";
             // do_read_header();
         } else{
+            std::cout << "SOCKET CLOSE do_read_body" << std::endl;
             socket_.close();
         }
     });
@@ -67,6 +70,7 @@ void CONNECTION::do_write(){
                 do_write();
             }
         } else{
+            std::cout << "SOCKET CLOSE do_write" << std::endl;
             socket_.close();
         }
     });

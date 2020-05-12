@@ -84,22 +84,37 @@ Gtk::Window* UI::get_window(){
 void UI::send_info(){
     toServer["from"]["name"] = name;
     toServer["from"]["uuid"] = uuid;
+
     chat_message msg;
-    std::string temp = toServer.dump();
-    msg.body_length(std::strlen(temp.c_str()));
-    std::memcpy(msg.body(), temp.c_str(), msg.body_length());
+    std::string toServer_str = toServer.dump();
+    
+    char msg_body[chat_message::max_body_length];
+    strcpy(msg_body, toServer_str.c_str());
+    
+    msg.body_length(std::strlen(toServer_str.c_str()) + 1);
+    std::memcpy(msg.body(), msg_body, msg.body_length());
     msg.encode_header();
+    
+    std::cout << "SENDING " << msg.body() << std::endl;
     connection->write(msg);
+    
 }
 void UI::send_move(std::string move){
     toServer["from"]["name"] = name;
     toServer["from"]["uuid"] = uuid;
     toServer["event"] = move;
+
     chat_message msg;
-    std::string temp = toServer.dump();
-    msg.body_length(std::strlen(temp.c_str()));
-    std::memcpy(msg.body(), temp.c_str(), msg.body_length());
+    std::string toServer_str = toServer.dump();
+
+    char msg_body[chat_message::max_body_length + 1];
+    strcpy(msg_body, toServer_str.c_str());
+
+    msg.body_length(std::strlen(toServer_str.c_str()) + 1);
+    std::memcpy(msg.body(), msg_body, msg.body_length());
     msg.encode_header();
+    
+    std::cout << "SENDING " << msg.body() << std::endl;
     connection->write(msg);
 }
 void UI::ready_up(void *ui){
@@ -114,7 +129,7 @@ void UI::ready_up(void *ui){
 }
 void UI::update_fromServer(std::string msg_body){
     std::cout << msg_body << std::endl;
-    json fromServer = json::parse(msg_body);
+    fromServer = json::parse(msg_body);
     update_game_screen(fromServer);
     update_spectate_screen(fromServer);
 }
