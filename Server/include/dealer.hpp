@@ -27,7 +27,7 @@ enum Hand { HAND_SIZE_MAX = 5 };
 
 enum Game_phase { PRE, ANTE_DEAL, BET_ONE, DRAW, BET_TWO, SHOWDOWN, PHASE_MAX };
 
-enum Bet_options { CHECK, CALL, RAISE, FOLD, BET_OPTION_MAX };
+enum Bet_options { CHECK, CALL, RAISE, FOLD, ALL_IN, BET_OPTION_MAX };
 
 enum Player_count { PLAYER_COUNT_MIN = 2, PLAYER_COUNT_MAX = 5 };
 
@@ -365,6 +365,11 @@ public:
             case RAISE:
                 {
                     int current_bet = to_dealer["current_bet"].get<int>();
+                    if(current_bet >= player->bank)
+                    {
+                        current_bet = player->bank;
+                        player->is_all_in = true;
+                    }
                     player->current_bet = current_bet;
                     player->bet += current_bet;
                     player->bank -= current_bet;
@@ -377,9 +382,23 @@ public:
                     to_players["dealer_comment"] = comment.str();
                 }
                 break;
+            case ALL_IN:
+                {
+                    player->current_bet = player->bank;
+                    player->bank = 0;
+                    player->bet += player->current_bet;
+                    player->is_all_in = true;
+                    
+                    std::stringstream comment;
+                    comment << "Player " << player->name << " has gone all-in.";
+                    to_players["dealer_comment"] = comment.str();
+                    break;
+                }
             case CHECK:
                 if(phase == BET_ONE)
                 {
+                    std::stringstream comment;
+                    comment << "Player " << player->name << " has checked." << std::endl;
                     break;
                 }
                 else if(phase == BET_TWO)
@@ -481,7 +500,7 @@ public:
                     }
                     if(player_uuids.size() >= PLAYER_COUNT_MIN && player_uuids.size() <= PLAYER_COUNT_MAX)
                     {
-                        bool all_ready = true;
+                        bool all_ready = true; // checks if all recognized players are ready
                         for(auto player_uuid: player_uuids)
                         {
                             if (!player_lookup_umap.at(player_uuid).is_active) all_ready = false; 
@@ -496,7 +515,7 @@ public:
                         }
                     }
                 }
-                if(phase != ANTE_DEAL) {break;}
+                if(phase != ANTE_DEAL) {break;} // if the phase changes, proceed to execute the ante_deal case
 
             case ANTE_DEAL:
                 {
@@ -539,7 +558,7 @@ public:
                         {
                             phase = DRAW;
                         }
-                        else if(active_count == 1)
+                        else if(active_count == 1) // if only one player remains active, go to showdown
                         {
                             phase = SHOWDOWN;
                         }
@@ -714,11 +733,11 @@ public:
     };
     std::unordered_map< Bet_options, std::string, std::hash<int> > bet_option_to_str
     {
-        {CHECK, "check"}, {CALL, "call"}, {RAISE, "raise"}, {FOLD, "fold"},
+        {CHECK, "check"}, {CALL, "call"}, {RAISE, "raise"}, {FOLD, "fold"}, {ALL_IN, "all in"},
     };
     std::unordered_map<std::string, Bet_options> bet_option_from_str
     {
-        {"check", CHECK}, {"call", CALL}, {"raise", RAISE}, {"fold", FOLD},
+        {"check", CHECK}, {"call", CALL}, {"raise", RAISE}, {"fold", FOLD}, {"all in", ALL_IN},
     };
     std::unordered_map< Game_phase, std::string, std::hash<int> > phase_to_str
     {
