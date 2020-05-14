@@ -508,7 +508,7 @@
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
-                    <property name="top_attach">0</property>
+                    <property name="top_attach">1</property>
                   </packing>
                 </child>
                 <child>
@@ -537,8 +537,8 @@
                     <property name="receives_default">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">0</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
                   </packing>
                 </child>
                 <child>
@@ -552,7 +552,7 @@
                     <property name="receives_default">True</property>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
+                    <property name="left_attach">0</property>
                     <property name="top_attach">1</property>
                   </packing>
                 </child>
@@ -628,7 +628,7 @@
                 <property name="pixbuf">../img/cards_150/gray_back.jpg</property>
               </object>
               <packing>
-                <property name="x">665</property>
+                <property name="x">465</property>
                 <property name="y">150</property>
               </packing>
             </child>
@@ -642,7 +642,7 @@
                 <property name="pixbuf">../img/cards_150/blue_back.jpg</property>
               </object>
               <packing>
-                <property name="x">615</property>
+                <property name="x">515</property>
                 <property name="y">170</property>
               </packing>
             </child>
@@ -670,7 +670,7 @@
                 <property name="pixbuf">../img/cards_150/red_back.jpg</property>
               </object>
               <packing>
-                <property name="x">515</property>
+                <property name="x">615</property>
                 <property name="y">210</property>
               </packing>
             </child>
@@ -684,7 +684,7 @@
                 <property name="pixbuf">../img/cards_150/green_back.jpg</property>
               </object>
               <packing>
-                <property name="x">465</property>
+                <property name="x">665</property>
                 <property name="y">230</property>
               </packing>
             </child>
