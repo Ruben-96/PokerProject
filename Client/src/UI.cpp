@@ -8,7 +8,7 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include <boost/lexical_cast.hpp>
-
+#include <unordered_map>
 #include "Connection.hpp"
 #include "UI.hpp"
 #include "json.hpp"
@@ -16,6 +16,8 @@
 #include "asio.hpp"
 
 using json = nlohmann::json;
+
+enum Moves { RAISE, CALL, CHECK, ALL_IN, FOLD, REQUEST_CARDS };
 
 UI::UI(){
     builder = Gtk::Builder::create_from_file("glade/MainWindow.glade");
@@ -60,6 +62,10 @@ UI::UI(){
     builder->get_widget("bx_player_three", bx_player_three);
     builder->get_widget("bx_player_four", bx_player_four);
     builder->get_widget("bx_player_five", bx_player_five);
+
+    builder->get_widget("spin_raise", spin_raise);
+    builder->get_widget("lbl_raise", lbl_raise);
+    builder->get_widget("btn_confirm_raise", btn_confirm_raise);
     playersGame.push_back(bx_player_one);
     playersGame.push_back(bx_player_two);
     playersGame.push_back(bx_player_three);
@@ -93,8 +99,14 @@ UI::UI(){
     btn_call->set_sensitive(false);
     btn_check->set_sensitive(false);
     btn_fold->set_sensitive(false);
+
+    spin_raise->hide();
+    lbl_raise->hide();
+    btn_confirm_raise->hide();
+    
     btn_leave_game->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
     btn_raise->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&raise_), this));
+    btn_confirm_raise->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&confirm_raise), this));
     btn_bet->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&bet), this));
     btn_allin->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&allin), this));
     btn_call->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&call), this));
@@ -140,15 +152,42 @@ void UI::ready_up(void *ui){
 // }
 void UI::raise_(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
-    tempUI->send_move("raise");
+    //tempUI->send_move("raise");
+    tempUI->btn_raise->hide();
+    tempUI->btn_bet->hide();
+    tempUI->btn_allin->hide();
+    tempUI->btn_call->hide();
+    tempUI->btn_check->hide();
+    tempUI->btn_fold->hide();
+    
+    tempUI->spin_raise->show();
+    tempUI->lbl_raise->show();
+    tempUI->btn_confirm_raise->show();
 }
+
+void UI::confirm_raise(void *ui)
+{
+    UI *tempUI = static_cast<UI *>(ui);
+
+    tempUI->btn_raise->show();
+    tempUI->btn_bet->show();
+    tempUI->btn_allin->show();
+    tempUI->btn_call->show();
+    tempUI->btn_check->show();
+    tempUI->btn_fold->show();
+    
+    tempUI->spin_raise->hide();
+    tempUI->lbl_raise->hide();
+    tempUI->btn_confirm_raise->hide();
+}
+
 void UI::bet(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
     tempUI->send_move("bet");
 }
 void UI::allin(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
-    tempUI->send_move("allin");
+    tempUI->send_move("all in");
 }
 void UI::call(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
@@ -215,11 +254,32 @@ void UI::send_info(){
     connection->write(msg);
     
 }
-void UI::send_move(std::string move){
+void UI::send_move(std::string move_str){
     toServer["from"]["name"] = name;
     toServer["from"]["uuid"] = uuid;
-    toServer["event"] = move;
-
+    toServer["event"] = move_str;
+    std::unordered_map<std::string, Moves> moves_from_str
+    {
+        {"check", CHECK}, {"call", CALL}, {"raise", RAISE}, {"fold", FOLD}, {"all in", ALL_IN}, {"request_cards", REQUEST_CARDS}
+    };
+    Moves move = moves_from_str.at(move_str);
+    switch(move)
+    {
+        case RAISE:
+            break;
+        case CALL:
+            break;
+        case CHECK:
+            break;
+        case FOLD:
+            break;
+        case ALL_IN:
+            break;
+        case REQUEST_CARDS:
+            break;
+        default:
+            break;
+    }
     chat_message msg;
     std::string toServer_str = toServer.dump();
 
@@ -234,8 +294,11 @@ void UI::send_move(std::string move){
 }
 void UI::update_fromServer(std::string message){
     std::cout << message << std::endl;
-    message.erase(0, message.find("{"));
+    //message.erase(0, message.find("{"));
+    //std::cout << "??? " << message << std::endl;
+    std::cout << "does it pass here?" << std::endl;
     json fromServer = json::parse(message);
+    std::cout << fromServer.dump(2) << std::endl;
     int i = 0;
     for(auto& element : fromServer["hand"]){
         playersNameGame.at(i)->set_label(element.value("name", "No Name"));
@@ -245,6 +308,7 @@ void UI::update_fromServer(std::string message){
             int j = 0;
             for(auto& card : element["cards"]){
                 std::string url = "./img/cards_150/" + card.get<std::string>() + ".jpg";
+                std::cout << url << std::endl; // card didn't load, trying to replicate, DEBUG
                 playersCards.at(j)->set(url);
                 // if(fromServer.value("phase", "NULL") == "draw phase"){
                 //     playersCards.at(j)->set_sensitive(true);
@@ -271,7 +335,8 @@ void UI::update_fromServer(std::string message){
         btn_check->set_sensitive(false);
         btn_fold->set_sensitive(false);
     }
-    Gtk::Label label(fromServer.value("dealer_comment", "No Comment"));
+    std::cout << "passed hand loading loop" << std::endl;
+    Gtk::Label label(fromServer.value("dealer_comment", "No comment."));
     list_chat->append(label);
 
 }

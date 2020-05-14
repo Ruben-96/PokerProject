@@ -64,6 +64,11 @@ class UI{
         Gtk::Button *btn_call;
         Gtk::Button *btn_check;
         Gtk::Button *btn_fold;
+
+        Gtk::SpinButton *spin_raise;
+        Gtk::Label *lbl_raise;
+        Gtk::Button *btn_confirm_raise;
+        
         Gtk::Label *lbl_player_bank;
         Gtk::ListBox *list_chat;
         Gtk::Button *btn_ready;
@@ -75,6 +80,7 @@ class UI{
         //Spectate Screen
         Gtk::Button *btn_leave_spectate;
         //Game Variables
+        int current_bet;
 
         UI();
         ~UI();
@@ -83,6 +89,7 @@ class UI{
         void send_move(std::string move);
         void update_fromServer(std::string msg);
         static void raise_(void *ui);
+        static void confirm_raise(void *ui);
         static void bet(void *ui);
         static void allin(void *ui);
         static void call(void *ui);
