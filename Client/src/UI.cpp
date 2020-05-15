@@ -4,6 +4,7 @@
 #include <thread>
 #include <vector>
 #include <gtkmm.h>
+#include <algorithm>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -37,25 +38,30 @@ UI::UI(){
     builder->get_widget("lbl_connection_error", lbl_connection_error);
     //Game Screen
     builder->get_widget("btn_leave_game", btn_leave_game);
+    
     builder->get_widget("lbl_player_one", lbl_player_one);
     builder->get_widget("lbl_player_two", lbl_player_two);
     builder->get_widget("lbl_player_three", lbl_player_three);
     builder->get_widget("lbl_player_four", lbl_player_four);
     builder->get_widget("lbl_player_five", lbl_player_five);
+    
     builder->get_widget("img_card_one", img_card_one);
     builder->get_widget("img_card_two", img_card_two);
     builder->get_widget("img_card_three", img_card_three);
     builder->get_widget("img_card_four", img_card_four);
     builder->get_widget("img_card_five", img_card_five);
+    
     builder->get_widget("btn_raise", btn_raise);
-    builder->get_widget("btn_bet", btn_bet);
     builder->get_widget("btn_allin", btn_allin);
     builder->get_widget("btn_call", btn_call);
     builder->get_widget("btn_check", btn_check);
     builder->get_widget("btn_fold", btn_fold);
+    
     builder->get_widget("lbl_player_bank", lbl_player_bank);
     builder->get_widget("list_chat", list_chat);
+    
     builder->get_widget("btn_ready", btn_ready);
+    
     builder->get_widget("bx_player_one", bx_player_one);
     builder->get_widget("bx_player_two", bx_player_two);
     builder->get_widget("bx_player_three", bx_player_three);
@@ -65,21 +71,33 @@ UI::UI(){
     builder->get_widget("entry_raise", entry_raise);
     builder->get_widget("lbl_raise", lbl_raise);
     builder->get_widget("btn_confirm_raise", btn_confirm_raise);
+    
+    builder->get_widget("lbl_draw", lbl_draw);
+    builder->get_widget("check_card_1", check_card_1);
+    builder->get_widget("check_card_2", check_card_2);
+    builder->get_widget("check_card_3", check_card_3);
+    builder->get_widget("check_card_4", check_card_4);
+    builder->get_widget("check_card_5", check_card_5);
+    builder->get_widget("btn_draw", btn_draw);
+    
     playersGame.push_back(bx_player_one);
     playersGame.push_back(bx_player_two);
     playersGame.push_back(bx_player_three);
     playersGame.push_back(bx_player_four);
     playersGame.push_back(bx_player_five);
+    
     playersNameGame.push_back(lbl_player_one);
     playersNameGame.push_back(lbl_player_two);
     playersNameGame.push_back(lbl_player_three);
     playersNameGame.push_back(lbl_player_four);
     playersNameGame.push_back(lbl_player_five);
+    
     playersCards.push_back(img_card_one);
     playersCards.push_back(img_card_two);
     playersCards.push_back(img_card_three);
     playersCards.push_back(img_card_four);
     playersCards.push_back(img_card_five);
+    
     bx_player_one->hide();
     bx_player_two->hide();
     bx_player_three->hide();
@@ -93,29 +111,37 @@ UI::UI(){
     btn_join->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&join_game), this));
     btn_spectate->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&spectate_game), this));
     //Game Screen
-    btn_raise->set_sensitive(false);
-    btn_bet->set_sensitive(false);
-    btn_allin->set_sensitive(false);
-    btn_call->set_sensitive(false);
-    btn_check->set_sensitive(false);
-    btn_fold->set_sensitive(false);
-
+    bet_buttons = {btn_raise, btn_allin, btn_call, btn_check, btn_fold}; 
+    for(auto button: bet_buttons) {button->set_sensitive(false);}
     entry_raise->hide();
     lbl_raise->hide();
     btn_confirm_raise->hide();
     
+
+    draw_checkbuttons = {check_card_1, check_card_2, check_card_3, check_card_4, check_card_5};
+    draw_buttons = {lbl_draw, check_card_1, check_card_2, check_card_3, check_card_4, check_card_5, btn_draw};
+    for(auto button: draw_buttons) {button->hide();}
+
     btn_leave_game->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
     
     btn_raise->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&raise_), this));
     btn_confirm_raise->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&confirm_raise), this));
     
-    btn_bet->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&bet), this));
     btn_allin->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&allin), this));
     btn_call->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&call), this));
     btn_check->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&check), this));
     btn_fold->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&fold), this));
     btn_ready->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&ready_up), this));
     
+    btn_draw->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&select_discards), this));
+    
+    //rank_turn_button
+
+    str_to_phase =
+    {
+        {"pre", PRE}, {"ante & deal", ANTE_DEAL}, {"bet phase #1", BET_ONE}, {"draw phase", DRAW}, 
+        {"bet phase #2", BET_TWO}, {"showdown", SHOWDOWN},
+    };
     //Spectate Screen
     btn_leave_spectate->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
 }
@@ -133,36 +159,31 @@ void UI::ready_up(void *ui){
     tempUI->btn_ready->set_sensitive(false);
     tempUI->send_move("join");
 }
-// void UI::select_card_one(void *ui){
-//     UI *tempUI = static_cast<UI *>(ui);
-    
-// }
-// void UI::select_card_two(void *ui){
-//     UI *tempUI = static_cast<UI *>(ui);
-    
-// }
-// void UI::select_card_three(void *ui){
-//     UI *tempUI = static_cast<UI *>(ui);
-    
-// }
-// void UI::select_card_four(void *ui){
-//     UI *tempUI = static_cast<UI *>(ui);
-    
-// }
-// void UI::select_card_five(void *ui){
-//     UI *tempUI = static_cast<UI *>(ui);
-    
-// }
+
+void UI::select_discards(void *ui)
+{
+    UI *tempUI = static_cast<UI *>(ui);
+    std::vector<bool> card_bool_vec;
+    std::vector<std::string> discard_vec;
+    for(auto checkbutton: tempUI->draw_checkbuttons)
+    {
+        card_bool_vec.push_back(checkbutton->get_active());
+    }
+    for(int i = 0; i < 5; i++)
+    {
+        if(card_bool_vec.at(i))
+        {
+            discard_vec.push_back(tempUI->player_hand_vec.at(i));
+        }
+    }
+    tempUI->send_move("request_cards", discard_vec);
+}
+
 void UI::raise_(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
-    
-    tempUI->btn_raise->hide();
-    tempUI->btn_bet->hide();
-    tempUI->btn_allin->hide();
-    tempUI->btn_call->hide();
-    tempUI->btn_check->hide();
-    tempUI->btn_fold->hide();
-    
+    // hide bet phase interface
+    for(auto button: tempUI->bet_buttons) { button->hide(); }
+    // show raise interface
     tempUI->entry_raise->show();
     tempUI->lbl_raise->show();
     tempUI->btn_confirm_raise->show();
@@ -172,29 +193,22 @@ void UI::confirm_raise(void *ui)
 {
     UI *tempUI = static_cast<UI *>(ui);
     
-    std::string raise_str = tempUI->entry_raise->get_text();
-    int current_bet = std::atoi(raise_str.c_str());
-    tempUI->entry_raise->set_text("");
-
-    // hide raise interface
-    tempUI->entry_raise->hide();
-    tempUI->lbl_raise->hide();
-    tempUI->btn_confirm_raise->hide();
-    // show bet phase interface
-    tempUI->btn_raise->show();
-    tempUI->btn_bet->show();
-    tempUI->btn_allin->show();
-    tempUI->btn_call->show();
-    tempUI->btn_check->show();
-    tempUI->btn_fold->show();
-    
-    tempUI->send_move("raise", current_bet);
+    std::string raise_str = tempUI->entry_raise->get_text(); // gets text from field
+    int current_bet = std::atoi(raise_str.c_str()); // converts to int
+    tempUI->entry_raise->set_text(""); // resets field
+    if(current_bet > 0 && current_bet < tempUI->bank)
+    {
+        // hide raise interface
+        tempUI->entry_raise->hide();
+        tempUI->lbl_raise->hide();
+        tempUI->btn_confirm_raise->hide();
+        // show bet phase interface
+        for(auto button: tempUI->bet_buttons) { button->show(); }
+        
+        tempUI->send_move("raise", current_bet); // sends entered data to sending function
+    }
 }
 
-void UI::bet(void *ui){
-    UI *tempUI = static_cast<UI *>(ui);
-    tempUI->send_move("bet");
-}
 void UI::allin(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
     tempUI->send_move("all in");
@@ -284,37 +298,32 @@ void UI::send_move(std::string move_str, int current_bet)
     connection->write(msg);
 }
 
+void UI::send_move(std::string move_str, std::vector<std::string> discard_vec)
+{
+    toServer["from"]["name"] = name;
+    toServer["from"]["uuid"] = uuid;
+    toServer["event"] = move_str;
+    json cards_requested(json::value_t::array);
+    for(auto card: discard_vec) {cards_requested.push_back(card);}
+    toServer["cards_requested"] = cards_requested;
+
+    chat_message msg;
+    std::string toServer_str = toServer.dump();
+    
+    char msg_body[chat_message::max_body_length + 1];
+    strcpy(msg_body, toServer_str.c_str());
+
+    msg.body_length(std::strlen(toServer_str.c_str()) + 1);
+    std::memcpy(msg.body(), msg_body, msg.body_length());
+    msg.encode_header();
+    
+    connection->write(msg);
+}
+
 void UI::send_move(std::string move_str){
     toServer["from"]["name"] = name;
     toServer["from"]["uuid"] = uuid;
     toServer["event"] = move_str;
-    /*
-    std::unordered_map<std::string, Moves> moves_from_str
-    {
-        {"check", CHECK}, {"call", CALL}, {"raise", RAISE}, {"fold", FOLD}, {"all in", ALL_IN}, {"request_cards", REQUEST_CARDS}, {"join", READY}
-    };
-    Moves move = moves_from_str.at(move_str);
-    switch(move)
-    {
-        case READY:
-            break;
-        case RAISE:
-            toServer["current_bet"] = current_bet;
-            break;
-        case CALL:
-            break;
-        case CHECK:
-            break;
-        case FOLD:
-            break;
-        case ALL_IN:
-            break;
-        case REQUEST_CARDS:
-            break;
-        default:
-            break;
-    }
-    */
     chat_message msg;
     std::string toServer_str = toServer.dump();
 
@@ -327,10 +336,9 @@ void UI::send_move(std::string move_str){
     
     connection->write(msg);
 }
+
 void UI::update_fromServer(std::string message){
     std::cout << message << std::endl;
-    //message.erase(0, message.find("{"));
-    //std::cout << "??? " << message << std::endl;
     json fromServer = json::parse(message);
     std::cout << fromServer.dump(2) << std::endl;
     int i = 0;
@@ -339,39 +347,53 @@ void UI::update_fromServer(std::string message){
         playersGame.at(i)->show();
         if(element.value("uuid", "NULL") == uuid){
             lbl_player_bank->set_label(std::to_string(element.value("final_bank", 0000)));
+            player_hand_vec = element["cards"].get<std::vector<std::string>>();
+            std::reverse(player_hand_vec.begin(), player_hand_vec.end());
+            bank = element.value("final_bank",0);
             int j = 0;
             for(auto& card : element["cards"]){
                 std::string url = "./img/cards_150/" + card.get<std::string>() + ".jpg";
-                std::cout << url << std::endl; // card didn't load, trying to replicate, DEBUG
                 playersCards.at(j)->set(url);
-                // if(fromServer.value("phase", "NULL") == "draw phase"){
-                //     playersCards.at(j)->set_sensitive(true);
-                // } else{
-                //     playersCards.at(j)->set_sensitive(false);
-                // }
                 j++;
             }
         }
         i++;
     }
-    if(fromServer.value("turn", "NULL") == uuid){
-        btn_raise->set_sensitive(true);
-        btn_bet->set_sensitive(true);
-        btn_allin->set_sensitive(true);
-        btn_call->set_sensitive(true);
-        btn_check->set_sensitive(true);
-        btn_fold->set_sensitive(true);
-    } else{
-        btn_raise->set_sensitive(false);
-        btn_bet->set_sensitive(false);
-        btn_allin->set_sensitive(false);
-        btn_call->set_sensitive(false);
-        btn_check->set_sensitive(false);
-        btn_fold->set_sensitive(false);
+    Game_phase phase = str_to_phase.at(fromServer.value("phase", "pre"));
+    bool is_turn = (fromServer.value("turn", "NULL") == uuid);
+    switch(phase)
+    {
+        case BET_TWO:
+            btn_check->hide();
+        case BET_ONE:
+            for(auto button: draw_buttons) { button->hide(); }
+            for(auto button: bet_buttons)
+            {
+                button->show();
+                button->set_sensitive(is_turn);
+            }
+            break;
+        case DRAW:
+            for(auto button: draw_buttons) { button->show(); }
+            for(auto button: draw_checkbuttons) { button->set_sensitive(is_turn); }
+            btn_draw->set_sensitive(is_turn);
+            for(auto button: bet_buttons) { button->hide(); }
+            for(auto card: player_hand_vec) {std::cout << card << std::endl;}
+            break;
+        default:
+            break;
     }
-    Gtk::Label label(fromServer.value("dealer_comment", "No comment."));
-    list_chat->append(label);
-
+    Gtk::Label *label = Gtk::manage(new Gtk::Label());
+    label->set_text(fromServer.value("dealer_comment", "No comment."));
+    list_chat->insert(*label, -1);
+    list_chat->show_all();
+    /*
+    Gtk::Box *box = Gtk::manage(new Gtk::Box());
+    box->pack_start(*label);
+    Gtk::ListBoxRow *row = Gtk::manage(new Gtk::ListBoxRow());
+    row->add(*box);
+    list_chat->append(*row);
+    */
 }
 void UI::connect(std::string ip, std::string port){
     io_context = new asio::io_context();

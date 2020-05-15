@@ -205,7 +205,7 @@ public:
     return HAND_RANK_MAX;
     }
 
-    std::vector<std::string> determine_winner(std::vector<std::string> player_uuids)
+    std::vector<std::string> determine_winner(std::vector<std::string> player_uuids, Rank& high_hand)
     {
         std::unordered_map< Rank, std::vector<std::string>, std::hash<int> > rank_to_player_map;
         for(int i = 0; i < HAND_RANK_MAX; i++)
@@ -226,7 +226,6 @@ public:
             }
         }
         
-        enum Rank high_hand; 
         for(int i = 0; i < HAND_RANK_MAX; i++) // checks all hands from highest to lowest
         {
             high_hand = static_cast<Rank>(i);
@@ -644,13 +643,21 @@ public:
 
             case SHOWDOWN: 
                 {
-                    std::vector<std::string> winner_uuids = determine_winner(player_uuids);
+                    Rank winning_rank;
+                    std::vector<std::string> winner_uuids = determine_winner(player_uuids, winning_rank);
+                    std::vector<std::string> winner_names;
                     json winner_uuids_json(json::value_t::array);
                     for(auto winner_uuid: winner_uuids)
                     {
                         winner_uuids_json.push_back(winner_uuid);
+                        winner_names.push_back(player_lookup_umap.at(winner_uuid).name);
                     }
                     to_players["winners"] = winner_uuids_json;
+                    std::stringstream comment;
+                    comment << "Winner(s): ";
+                    for(auto name: winner_names) { comment << name; }
+                    comment << ", with a " << rank_to_str.at(winning_rank); 
+                    to_players["dealer_comment"] = comment.str();
                     break;
                 }
                 break;
@@ -714,6 +721,13 @@ public:
     int ante = 100;
     int was_raise_in_round = false;
     // maps to get string representations from enums and vice versa
+
+    std::unordered_map< Rank, std::string, std::hash<int> > rank_to_str
+    {
+        {ROYAL_FLUSH, "Royal Flush"}, {STRAIGHT_FLUSH, "Straight Flush"}, {FOUR_KIND, "Four of a Kind"}, {FULL_HOUSE, "Full House"}, 
+        {FLUSH, "Flush"}, {STRAIGHT, "Straight"}, {THREE_KIND, "Three of a Kind"}, {TWO_PAIR, "Two Pair"}, {PAIR, "Pair"}, {HIGH_CARD, "High Card"}
+    };
+
     std::unordered_map< Suit, std::string, std::hash<int> > suit_to_str
     {
         {SPADES, "spades"}, {DIAMONDS, "diamonds"}, {HEARTS, "hearts"}, {CLUBS, "clubs"},
