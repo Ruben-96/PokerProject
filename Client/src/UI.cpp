@@ -17,7 +17,7 @@
 
 using json = nlohmann::json;
 
-enum Moves { RAISE, CALL, CHECK, ALL_IN, FOLD, REQUEST_CARDS };
+enum Moves { READY, RAISE, CALL, CHECK, ALL_IN, FOLD, REQUEST_CARDS };
 
 UI::UI(){
     builder = Gtk::Builder::create_from_file("glade/MainWindow.glade");
@@ -63,7 +63,7 @@ UI::UI(){
     builder->get_widget("bx_player_four", bx_player_four);
     builder->get_widget("bx_player_five", bx_player_five);
 
-    builder->get_widget("spin_raise", spin_raise);
+    builder->get_widget("entry_raise", entry_raise);
     builder->get_widget("lbl_raise", lbl_raise);
     builder->get_widget("btn_confirm_raise", btn_confirm_raise);
     playersGame.push_back(bx_player_one);
@@ -86,6 +86,7 @@ UI::UI(){
     bx_player_three->hide();
     bx_player_four->hide();
     bx_player_five->hide();
+    
     //Spectate Screen
     builder->get_widget("btn_leave_spectate", btn_leave_spectate);
 
@@ -100,19 +101,22 @@ UI::UI(){
     btn_check->set_sensitive(false);
     btn_fold->set_sensitive(false);
 
-    spin_raise->hide();
+    entry_raise->hide();
     lbl_raise->hide();
     btn_confirm_raise->hide();
     
     btn_leave_game->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
+    
     btn_raise->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&raise_), this));
     btn_confirm_raise->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&confirm_raise), this));
+    
     btn_bet->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&bet), this));
     btn_allin->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&allin), this));
     btn_call->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&call), this));
     btn_check->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&check), this));
     btn_fold->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&fold), this));
     btn_ready->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&ready_up), this));
+    
     //Spectate Screen
     btn_leave_spectate->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
 }
@@ -160,7 +164,7 @@ void UI::raise_(void *ui){
     tempUI->btn_check->hide();
     tempUI->btn_fold->hide();
     
-    tempUI->spin_raise->show();
+    tempUI->entry_raise->show();
     tempUI->lbl_raise->show();
     tempUI->btn_confirm_raise->show();
 }
@@ -176,7 +180,7 @@ void UI::confirm_raise(void *ui)
     tempUI->btn_check->show();
     tempUI->btn_fold->show();
     
-    tempUI->spin_raise->hide();
+    tempUI->entry_raise->hide();
     tempUI->lbl_raise->hide();
     tempUI->btn_confirm_raise->hide();
 }
@@ -260,11 +264,13 @@ void UI::send_move(std::string move_str){
     toServer["event"] = move_str;
     std::unordered_map<std::string, Moves> moves_from_str
     {
-        {"check", CHECK}, {"call", CALL}, {"raise", RAISE}, {"fold", FOLD}, {"all in", ALL_IN}, {"request_cards", REQUEST_CARDS}
+        {"check", CHECK}, {"call", CALL}, {"raise", RAISE}, {"fold", FOLD}, {"all in", ALL_IN}, {"request_cards", REQUEST_CARDS}, {"join", READY}
     };
     Moves move = moves_from_str.at(move_str);
     switch(move)
     {
+        case READY:
+            break;
         case RAISE:
             break;
         case CALL:
@@ -296,7 +302,6 @@ void UI::update_fromServer(std::string message){
     std::cout << message << std::endl;
     //message.erase(0, message.find("{"));
     //std::cout << "??? " << message << std::endl;
-    std::cout << "does it pass here?" << std::endl;
     json fromServer = json::parse(message);
     std::cout << fromServer.dump(2) << std::endl;
     int i = 0;
@@ -335,7 +340,6 @@ void UI::update_fromServer(std::string message){
         btn_check->set_sensitive(false);
         btn_fold->set_sensitive(false);
     }
-    std::cout << "passed hand loading loop" << std::endl;
     Gtk::Label label(fromServer.value("dealer_comment", "No comment."));
     list_chat->append(label);
 

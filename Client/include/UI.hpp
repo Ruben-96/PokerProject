@@ -64,8 +64,8 @@ class UI{
         Gtk::Button *btn_call;
         Gtk::Button *btn_check;
         Gtk::Button *btn_fold;
-
-        Gtk::SpinButton *spin_raise;
+        
+        Gtk::Entry *entry_raise;
         Gtk::Label *lbl_raise;
         Gtk::Button *btn_confirm_raise;
         
@@ -90,6 +90,7 @@ class UI{
         void update_fromServer(std::string msg);
         static void raise_(void *ui);
         static void confirm_raise(void *ui);
+        
         static void bet(void *ui);
         static void allin(void *ui);
         static void call(void *ui);
