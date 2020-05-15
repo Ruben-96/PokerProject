@@ -228,7 +228,6 @@ void UI::spectate_game(void *ui){
     try{
         tempUI->connect(tempUI->entry_ip->get_text(), tempUI->entry_port->get_text());
         tempUI->name = tempUI->entry_name->get_text().raw();
-        tempUI->send_info();
         tempUI->stack->set_visible_child("spectate_screen");
     } catch(std::exception &e){
         tempUI->lbl_connection_error->set_visible(true);

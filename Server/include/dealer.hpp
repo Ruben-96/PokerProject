@@ -450,6 +450,8 @@ public:
     {
         // parses input string, updates
         json to_dealer = json::parse(input_string);
+        std::cout << to_dealer.dump(2) << std::endl;
+
         json to_players;
         // according to the game phase, modify the game state, and record the new game state in a json object
         Game_phase phase_now = phase;
@@ -617,7 +619,7 @@ public:
                     Bet_options bet_option = bet_option_from_str.at(player_event);
                     bet_transactions(player, bet_option, to_dealer, to_players);
 
-                    if(bet_option == RAISE) { was_raise_in_round = true; };
+                    if(bet_option == RAISE || bet_option == ALL_IN) { was_raise_in_round = true; };
                     
                     bool bet_round_ended = advance_turn();
                     if(bet_round_ended)
@@ -682,7 +684,6 @@ public:
             }
         }
 
-        std::cout << to_dealer.dump(4) << std::endl; // pretty print to_dealer
         std::cout << to_players.dump(4) << std::endl; // pretty print to_players
         
         // take the json dump of the game state, copy it, and return it to be delivered by the server
