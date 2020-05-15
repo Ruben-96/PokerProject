@@ -19,6 +19,8 @@
 using asio::ip::tcp;
 typedef nlohmann::json json;
 
+enum Moves { READY, RAISE, CALL, CHECK, ALL_IN, FOLD, REQUEST_CARDS }; 
+
 class CONNECTION;
 
 class UI{
@@ -80,13 +82,13 @@ class UI{
         //Spectate Screen
         Gtk::Button *btn_leave_spectate;
         //Game Variables
-        int current_bet;
 
         UI();
         ~UI();
         Gtk::Window* get_window();
         void send_info();
         void send_move(std::string move);
+        void send_move(std::string move, int current_bet);
         void update_fromServer(std::string msg);
         static void raise_(void *ui);
         static void confirm_raise(void *ui);

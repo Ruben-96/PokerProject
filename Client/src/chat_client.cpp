@@ -13,12 +13,14 @@
 #include <iostream>
 #include <thread>
 #include <gtkmm.h>
+#include <X11/Xlib.h>
 #include "json.hpp"
 #include "UI.hpp"
 //#include "asio.hpp"
 
 int main(int argc, char* argv[])
 {
+    XInitThreads();
     Glib::RefPtr<Gtk::Application> app = Gtk::Application::create("PokerProject.Team11");
     UI gui;
     app->set_flags(Gio::ApplicationFlags::APPLICATION_NON_UNIQUE);

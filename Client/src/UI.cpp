@@ -17,7 +17,6 @@
 
 using json = nlohmann::json;
 
-enum Moves { READY, RAISE, CALL, CHECK, ALL_IN, FOLD, REQUEST_CARDS };
 
 UI::UI(){
     builder = Gtk::Builder::create_from_file("glade/MainWindow.glade");
@@ -156,7 +155,7 @@ void UI::ready_up(void *ui){
 // }
 void UI::raise_(void *ui){
     UI *tempUI = static_cast<UI *>(ui);
-    //tempUI->send_move("raise");
+    
     tempUI->btn_raise->hide();
     tempUI->btn_bet->hide();
     tempUI->btn_allin->hide();
@@ -172,7 +171,16 @@ void UI::raise_(void *ui){
 void UI::confirm_raise(void *ui)
 {
     UI *tempUI = static_cast<UI *>(ui);
+    
+    std::string raise_str = tempUI->entry_raise->get_text();
+    int current_bet = std::atoi(raise_str.c_str());
+    tempUI->entry_raise->set_text("");
 
+    // hide raise interface
+    tempUI->entry_raise->hide();
+    tempUI->lbl_raise->hide();
+    tempUI->btn_confirm_raise->hide();
+    // show bet phase interface
     tempUI->btn_raise->show();
     tempUI->btn_bet->show();
     tempUI->btn_allin->show();
@@ -180,9 +188,7 @@ void UI::confirm_raise(void *ui)
     tempUI->btn_check->show();
     tempUI->btn_fold->show();
     
-    tempUI->entry_raise->hide();
-    tempUI->lbl_raise->hide();
-    tempUI->btn_confirm_raise->hide();
+    tempUI->send_move("raise", current_bet);
 }
 
 void UI::bet(void *ui){
@@ -258,10 +264,32 @@ void UI::send_info(){
     connection->write(msg);
     
 }
+
+void UI::send_move(std::string move_str, int current_bet)
+{
+    toServer["from"]["name"] = name;
+    toServer["from"]["uuid"] = uuid;
+    toServer["event"] = move_str;
+    toServer["current_bet"] = current_bet;
+
+    chat_message msg;
+    std::string toServer_str = toServer.dump();
+
+    char msg_body[chat_message::max_body_length + 1];
+    strcpy(msg_body, toServer_str.c_str());
+
+    msg.body_length(std::strlen(toServer_str.c_str()) + 1);
+    std::memcpy(msg.body(), msg_body, msg.body_length());
+    msg.encode_header();
+    
+    connection->write(msg);
+}
+
 void UI::send_move(std::string move_str){
     toServer["from"]["name"] = name;
     toServer["from"]["uuid"] = uuid;
     toServer["event"] = move_str;
+    /*
     std::unordered_map<std::string, Moves> moves_from_str
     {
         {"check", CHECK}, {"call", CALL}, {"raise", RAISE}, {"fold", FOLD}, {"all in", ALL_IN}, {"request_cards", REQUEST_CARDS}, {"join", READY}
@@ -272,6 +300,7 @@ void UI::send_move(std::string move_str){
         case READY:
             break;
         case RAISE:
+            toServer["current_bet"] = current_bet;
             break;
         case CALL:
             break;
@@ -286,6 +315,7 @@ void UI::send_move(std::string move_str){
         default:
             break;
     }
+    */
     chat_message msg;
     std::string toServer_str = toServer.dump();
 
