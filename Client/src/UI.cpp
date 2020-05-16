@@ -37,6 +37,7 @@ UI::UI(){
     builder->get_widget("btn_spectate", btn_spectate);
     builder->get_widget("lbl_connection_error", lbl_connection_error);
     //Game Screen
+    builder->get_widget("lbl_game_phase", lbl_game_phase);
     builder->get_widget("btn_leave_game", btn_leave_game);
     
     builder->get_widget("lbl_player_one", lbl_player_one);
@@ -106,6 +107,12 @@ UI::UI(){
     
     //Spectate Screen
     builder->get_widget("btn_leave_spectate", btn_leave_spectate);
+
+    //Winning Screen
+    builder->get_widget("btn_leave_winning", btn_leave_winning);
+    builder->get_widget("lbl_winner", lbl_winner);
+
+    btn_leave_winning->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
 
     //Login Screen
     btn_join->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&join_game), this));
@@ -342,6 +349,7 @@ void UI::update_fromServer(std::string message){
     json fromServer = json::parse(message);
     std::cout << fromServer.dump(2) << std::endl;
     int i = 0;
+    lbl_game_phase->set_label(fromServer.value("phase", "PreGame"));
     for(auto& element : fromServer["hand"]){
         playersNameGame.at(i)->set_label(element.value("name", "No Name"));
         playersGame.at(i)->show();
@@ -380,20 +388,24 @@ void UI::update_fromServer(std::string message){
             for(auto button: bet_buttons) { button->hide(); }
             for(auto card: player_hand_vec) {std::cout << card << std::endl;}
             break;
+        case SHOWDOWN:
+            for(auto &winner: fromServer["winners"]){
+                if(winner.get<std::string>() == uuid){
+                    lbl_winner->set_label("You Win!");
+                }
+            }
+            stack->set_visible_child("winning_screen");
+            break;
         default:
             break;
     }
-    Gtk::Label *label = Gtk::manage(new Gtk::Label());
-    label->set_text(fromServer.value("dealer_comment", "No comment."));
-    list_chat->insert(*label, -1);
-    list_chat->show_all();
-    /*
-    Gtk::Box *box = Gtk::manage(new Gtk::Box());
-    box->pack_start(*label);
-    Gtk::ListBoxRow *row = Gtk::manage(new Gtk::ListBoxRow());
-    row->add(*box);
-    list_chat->append(*row);
-    */
+    std::string commentText = fromServer.value("dealer_comment", "NULL");
+    if(commentText != "NULL"){
+        Gtk::Label *label = Gtk::manage(new Gtk::Label());
+        label->set_text(commentText);
+        list_chat->insert(*label, -1);
+        list_chat->show_all();
+    }
 }
 void UI::connect(std::string ip, std::string port){
     io_context = new asio::io_context();

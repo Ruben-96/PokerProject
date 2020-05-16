@@ -32,14 +32,19 @@ class UI{
         
     public:
         Glib::RefPtr<Gtk::Builder> builder;
+
         //Connection Variables
         CONNECTION *connection;
         asio::io_context *io_context;
         std::thread *thread;
+
         //Data Variables
         std::string name;
         std::string uuid;
         json toServer;
+        int bank;
+        std::unordered_map<std::string, Game_phase> str_to_phase;
+
         //Login Screen
         Gtk::Window *window;
         Gtk::Stack *stack;
@@ -49,19 +54,21 @@ class UI{
         Gtk::Button *btn_join;
         Gtk::Button *btn_spectate;
         Gtk::Label *lbl_connection_error;
+        //Game Screen
+        std::vector<std::string> player_hand_vec;
+        
+        Gtk::Label *lbl_game_phase;
+        Gtk::Button *btn_leave_game;
+
         std::vector<Gtk::Box *> playersGame;
         std::vector<Gtk::Label *> playersNameGame;
-        std::vector<Gtk::Image *> playersCards;
-        std::vector<std::string> player_hand_vec;
-        //Game Screen
-        Gtk::Button *btn_leave_game;
-        
         Gtk::Label *lbl_player_one;
         Gtk::Label *lbl_player_two;
         Gtk::Label *lbl_player_three;
         Gtk::Label *lbl_player_four;
         Gtk::Label *lbl_player_five;
         
+        std::vector<Gtk::Image *> playersCards;
         Gtk::Image *img_card_one;
         Gtk::Image *img_card_two;
         Gtk::Image *img_card_three;
@@ -79,6 +86,7 @@ class UI{
         Gtk::Label *lbl_raise;
         Gtk::Button *btn_confirm_raise;
 
+        //Draw Phase UI 
         Gtk::Label *lbl_draw;
         std::vector<Gtk::CheckButton *> draw_checkbuttons;
         std::vector<Gtk::Widget *> draw_buttons;
@@ -89,7 +97,6 @@ class UI{
         Gtk::CheckButton *check_card_5;
         Gtk::Button *btn_draw;
 
-        
         Gtk::Label *lbl_player_bank;
         Gtk::ListBox *list_chat;
         Gtk::Button *btn_ready;
@@ -100,37 +107,42 @@ class UI{
         Gtk::Box *bx_player_five;
         //Spectate Screen
         Gtk::Button *btn_leave_spectate;
-        //Game Variables
-        std::unordered_map<std::string, Game_phase> str_to_phase;
-        int bank;
         UI();
         ~UI();
         Gtk::Window* get_window();
+
+        //Winning Screen
+        Gtk::Button *btn_leave_winning;
+        Gtk::Label *lbl_winner;
+
+        void connect(std::string ip, std::string port);
+        void update_login_screen();
         void send_info();
         void send_move(std::string move);
         void send_move(std::string move, int current_bet);
         void send_move(std::string move, std::vector<std::string> discard_vec);
         void update_fromServer(std::string msg);
-        static void raise_(void *ui);
-        static void confirm_raise(void *ui);
         
+        //Select Moves Functions
         static void bet(void *ui);
         static void allin(void *ui);
         static void call(void *ui);
         static void check(void *ui);
         static void fold(void *ui);
-        static void join_game(void *ui);
+        static void raise_(void *ui);
+        static void confirm_raise(void *ui);
+
+        //Draw Phase Selecting Cards
         static void select_discards(void *ui);
-        void connect(std::string ip, std::string port);
-        void update_game_screen(json);
-        void update_spectate_screen(json);
-        void update_login_screen();
-        static void spectate_game(void *ui);
-        static void leave_game(void *ui);
-        static void ready_up(void *ui);
         static void select_card_one(void *ui);
         static void select_card_two(void *ui);
         static void select_card_three(void *ui);
         static void select_card_four(void *ui);
         static void select_card_five(void *ui);
+
+        //PreGame and PostGame Functions
+        static void join_game(void *ui);
+        static void spectate_game(void *ui);
+        static void leave_game(void *ui);
+        static void ready_up(void *ui);
 };
