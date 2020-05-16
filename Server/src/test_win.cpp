@@ -84,8 +84,8 @@ BOOST_AUTO_TEST_CASE(correct_winner_is_determined)
         Card(SPADES, JACK, "jackspades"),
         Card(SPADES, TEN, "10spades")
     }; // flush
-
-    std::vector<std::string> winners = game.determine_winner(game.player_uuids);
+    Rank high_rank;
+    std::vector<std::string> winners = game.determine_winner(game.player_uuids, high_rank);
     BOOST_CHECK( winners.size() == 1 );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), homer->uuid_str ) != winners.end() );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), marge->uuid_str ) == winners.end() );
@@ -170,7 +170,8 @@ BOOST_AUTO_TEST_CASE(winnings_are_distributed_properly)
         Card(SPADES, TEN, "10spades")
     }; // flush
 
-    std::vector<std::string> winners = game.determine_winner(game.player_uuids);
+    Rank high_rank;
+    std::vector<std::string> winners = game.determine_winner(game.player_uuids, high_rank);
     BOOST_CHECK( winners.size() == 1 );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), homer->uuid_str ) != winners.end() );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), marge->uuid_str ) == winners.end() );
@@ -250,7 +251,8 @@ BOOST_AUTO_TEST_CASE(tie_is_broken)
         Card(SPADES, TEN, "10spades")
     }; // flush
     BOOST_TEST_CHECKPOINT( "Preparing " << game.player_uuids.size() << " players to be determined" );
-    std::vector<std::string> winners = game.determine_winner(game.player_uuids);
+    Rank high_rank;
+    std::vector<std::string> winners = game.determine_winner(game.player_uuids, high_rank);
     BOOST_TEST_CHECKPOINT( "" << winners.size() << " player(s) win" );
     BOOST_CHECK( winners.size() == 1 );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), homer->uuid_str ) == winners.end() );
@@ -293,7 +295,8 @@ BOOST_AUTO_TEST_CASE(tie_is_broken_low)
     }; // low pair
     
     BOOST_TEST_CHECKPOINT( "Preparing " << game.player_uuids.size() << " players to be determined" );
-    std::vector<std::string> winners = game.determine_winner(game.player_uuids);
+    Rank high_rank;
+    std::vector<std::string> winners = game.determine_winner(game.player_uuids, high_rank);
     BOOST_TEST_CHECKPOINT( "" << winners.size() << " player(s) win" );
     BOOST_CHECK( winners.size() == 1 );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), homer->uuid_str ) != winners.end() );
@@ -375,7 +378,8 @@ BOOST_AUTO_TEST_CASE(tie_is_handled)
         Card(SPADES, TEN, "10spades")
     }; // flush
     BOOST_TEST_CHECKPOINT( "Preparing " << game.player_uuids.size() << " players to be determined" );
-    std::vector<std::string> winners = game.determine_winner(game.player_uuids);
+    Rank high_rank;
+    std::vector<std::string> winners = game.determine_winner(game.player_uuids, high_rank);
     BOOST_TEST_CHECKPOINT( "" << winners.size() << " player(s) win" );
     BOOST_CHECK( winners.size() == 2 );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), homer->uuid_str ) != winners.end() );
@@ -466,7 +470,8 @@ BOOST_AUTO_TEST_CASE(skips_inactive_player)
         Card(SPADES, TEN, "10spades")
     }; // flush
 
-    std::vector<std::string> winners = game.determine_winner(game.player_uuids);
+    Rank high_rank;
+    std::vector<std::string> winners = game.determine_winner(game.player_uuids, high_rank);
     BOOST_CHECK( winners.size() == 1 );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), homer->uuid_str ) == winners.end() );
     BOOST_CHECK( std::find( winners.begin(), winners.end(), marge->uuid_str ) != winners.end() );
