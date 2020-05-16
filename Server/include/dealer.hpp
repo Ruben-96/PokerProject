@@ -649,8 +649,12 @@ public:
                     json winner_uuids_json(json::value_t::array);
                     for(auto winner_uuid: winner_uuids)
                     {
-                        winner_uuids_json.push_back(winner_uuid);
-                        winner_names.push_back(player_lookup_umap.at(winner_uuid).name);
+                        std::string winner_name = player_lookup_umap.at(winner_uuid).name;
+                        json winner;
+                        winner["uuid"] = winner_uuid;
+                        winner["name"] = winner_name;
+                        winner_uuids_json.push_back(winner);
+                        winner_names.push_back(winner_name);
                     }
                     to_players["winners"] = winner_uuids_json;
                     std::stringstream comment;
