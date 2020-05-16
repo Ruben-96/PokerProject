@@ -1490,7 +1490,7 @@
               </object>
               <packing>
                 <property name="x">390</property>
-                <property name="y">260</property>
+                <property name="y">50</property>
               </packing>
             </child>
           </object>

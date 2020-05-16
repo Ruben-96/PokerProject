@@ -5,6 +5,9 @@ CXXFLAGS = g++ -DASIO_STANDALONE -Wall -O0 -g -std=c++11 -I./include -I./asio-1.
 LDLIBS = `pkg-config gtkmm-3.0 --libs` -lX11 -lpthread
 all: asio-1.12.2  chat_client
 
+run:
+	bin/chat_client
+
 asio-1.12.2:
 	tar xzf asio-1.12.2.tar.gz
 
