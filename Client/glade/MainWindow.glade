@@ -15,8 +15,11 @@
   <object class="GtkWindow" id="Window">
     <property name="name">Window</property>
     <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <property name="window_position">center</property>
     <property name="default_width">1280</property>
     <property name="default_height">720</property>
+    <property name="gravity">center</property>
     <child>
       <placeholder/>
     </child>
@@ -1483,14 +1486,65 @@
                 <property name="height_request">100</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="label" translatable="yes">You Lost! :(</property>
+                <property name="label" translatable="yes">Winners</property>
                 <attributes>
                   <attribute name="font-desc" value="Sans Bold 50"/>
                 </attributes>
               </object>
               <packing>
                 <property name="x">390</property>
-                <property name="y">260</property>
+                <property name="y">50</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lbl_winner1">
+                <property name="name">lbl_Winner1</property>
+                <property name="width_request">500</property>
+                <property name="height_request">100</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Winners</property>
+                <attributes>
+                  <attribute name="font-desc" value="Sans 30"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">390</property>
+                <property name="y">200</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lbl_winner2">
+                <property name="name">lbl_Winner2</property>
+                <property name="width_request">500</property>
+                <property name="height_request">100</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Winners</property>
+                <attributes>
+                  <attribute name="font-desc" value="Sans 30"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">390</property>
+                <property name="y">300</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lbl_winner3">
+                <property name="name">lbl_Winner3</property>
+                <property name="width_request">500</property>
+                <property name="height_request">100</property>
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Winners</property>
+                <attributes>
+                  <attribute name="font-desc" value="Sans 30"/>
+                </attributes>
+              </object>
+              <packing>
+                <property name="x">390</property>
+                <property name="y">400</property>
               </packing>
             </child>
           </object>

@@ -113,7 +113,10 @@ class UI{
 
         //Winning Screen
         Gtk::Button *btn_leave_winning;
-        Gtk::Label *lbl_winner;
+        Gtk::Label *lbl_winner1;
+        Gtk::Label *lbl_winner2;
+        Gtk::Label *lbl_winner3;
+        std::vector<Gtk::Label *> lbl_winners;
 
         void connect(std::string ip, std::string port);
         void update_login_screen();

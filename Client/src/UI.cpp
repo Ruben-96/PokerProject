@@ -29,6 +29,7 @@ UI::UI(){
     uuid = boost::uuids::to_string(boost::uuids::random_generator()());
     //Login Screen
     builder->get_widget("Window", window);
+    window->set_title("Poker++");
     builder->get_widget("Stack", stack);
     builder->get_widget("entry_name", entry_name);
     builder->get_widget("entry_ip", entry_ip);
@@ -110,7 +111,16 @@ UI::UI(){
 
     //Winning Screen
     builder->get_widget("btn_leave_winning", btn_leave_winning);
-    builder->get_widget("lbl_winner", lbl_winner);
+    builder->get_widget("lbl_winner1", lbl_winner1);
+    builder->get_widget("lbl_winner2", lbl_winner2);
+    builder->get_widget("lbl_winner3", lbl_winner3);
+    lbl_winners.push_back(lbl_winner1);
+    lbl_winners.push_back(lbl_winner2);
+    lbl_winners.push_back(lbl_winner3);
+    lbl_winner1->hide();
+    lbl_winner2->hide();
+    lbl_winner3->hide();
+
 
     btn_leave_winning->signal_clicked().connect(sigc::bind(sigc::ptr_fun(&leave_game), this));
 
@@ -369,6 +379,7 @@ void UI::update_fromServer(std::string message){
     }
     Game_phase phase = str_to_phase.at(fromServer.value("phase", "pre"));
     bool is_turn = (fromServer.value("turn", "NULL") == uuid);
+    int k = 0;
     switch(phase)
     {
         case BET_TWO:
@@ -390,9 +401,10 @@ void UI::update_fromServer(std::string message){
             break;
         case SHOWDOWN:
             for(auto &winner: fromServer["winners"]){
-                if(winner.get<std::string>() == uuid){
-                    lbl_winner->set_label("You Win!");
-                }
+                lbl_winners.at(k)->set_label(winner.value("name", "NULL"));
+                lbl_winners.at(k)->show();
+                k++;
+                if(k > 2) break;
             }
             stack->set_visible_child("winning_screen");
             break;
